@@ -1,0 +1,342 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    float: left;
+    font-family: 'Roboto', sans-serif;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.block{
+    display: block;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+.inline{
+    display: inline;
+}
+
+.w100{
+    width: 100%;
+}
+
+.h100{
+    height: 100%;
+}
+
+.w90{
+    width: 90%;
+}
+
+.w80{
+    width: 80%;
+}
+
+.w33{
+    width: 33%;
+}
+
+.w32{
+    width: 32%;
+}
+
+.mb-3{
+    margin-bottom: 3%;
+}
+
+.sign-up > form > div:first-child > div{
+    padding: 0;
+}
+
+.body-container{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.bk-cc{
+    background: #090909;
+}
+
+.cc > img{
+    width:60%;
+}
+
+.motto > h1{
+    font-size: 2.5em;
+    line-height: 1.3;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 45px;
+    color: #43962f;
+}
+
+.motto > h2{
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 45px;
+    color: #d4d4d4; 
+}
+
+.btnreg{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    line-height: 1.5;
+    transition: all .15s ease-in-out;
+    border-radius: .3rem;
+    padding: 1rem 3.5rem;
+    font-size: 20px;
+    border: 2px solid #509f2e;
+    color: #d4d4d4;
+    cursor: pointer;
+    background: none;
+    font-weight: 600;
+    outline: none!important;
+}
+
+.container-form-btn > div{
+    padding: 0;
+}
+
+.container-form-btn > div button{
+    border-radius: 50px;
+    border: none;
+    padding: 13px;
+    background: none;
+    color: #fff;
+    font-size: 18px;
+    outline: none;
+}
+
+.container-form-btn > div button.active{
+    background: linear-gradient(to right, #045e32, #92cc25);
+}
+
+.frm-sign{
+    background: #141414;
+    padding: 50px 40px;
+    border-radius: 5px;
+    margin-bottom: 2%;
+}
+
+.frm-sign div h1{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 5%;
+    color: #43962f;
+}
+
+.frm-sign div label{
+    font-family: 'Roboto', sans-serif;
+    font-size: 19px;
+    color: #d4d4d4;
+    line-height: 1.2;
+    padding-left: 2px;
+    font-weight: bolder;
+}
+
+.frm-sign div input:not([type=checkbox]){
+    display: block;
+    width: 100%;
+    height: 25px;
+    background: transparent;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.2;
+    padding: 0 2px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #999999;
+    font-weight: 500;
+}
+
+.sign-up > form > div:first-child > div:first-child input{
+    width:90%;
+}
+
+.arr::before{
+    content: '⟶';
+}
+
+.verEmail{
+    color: #fff;
+    padding-bottom: 7%;
+}
+
+.txt-center{
+    text-align: center;
+}
+
+.verContent{
+    position: relative;
+    margin-top: -80px;
+}
+
+.verEmail > img{
+    width: 660px;
+    height: 470px;
+    position: relative;
+    left: 50%;
+    margin-left: -318px;
+}
+
+.verContent h1{
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 2%;
+}
+
+.verContent h2{
+    text-align: center;
+    font-size: 25px;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-weight: 400;
+}
+
+.imgProfile{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.imgProfile > img{
+    border-radius: 100%;
+    height: 250px;
+    width: 250px;
+    border: 3px solid #43962f;
+    background: linear-gradient(to right, #045e32, #92cc25);
+}
+
+.completeProfile{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.container-edit{
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.container-edit form input[type=submit]{
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #045e32, #92cc25);
+    color: #fff;
+    font-weight: 600;
+}
+
+.container-edit-info p{
+    color: #fff;
+}
+
+.container-bio h1{
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 5%;
+}
+
+.container-bio form textarea{
+    width: 80%;
+    display: block;
+    height: 256px;
+    border-radius: 5px;
+    border: 2px solid #43962f;
+    padding: 12px;
+    font-size: 18px;
+    margin-bottom: 3%;
+}
+
+.container-bio form input[type=submit]{
+    width: 80%;
+    border-radius: 5px;
+    height: 40px;
+    border: none;
+    background: linear-gradient(to right, #045e32, #92cc25);
+    color: #fff;
+    font-weight: 600;
+}
+
+.container-userProfile{
+    padding: 0;
+    height: 100%;
+}
+
+.container-userProfile > div:first-child{
+    padding: 0;
+    height: 40%;
+}
+
+.cover-profile{
+    background: url(http://localhost/Git_Repositories/Fitnet/profile/cover-fly.jpg);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.imageProfile{
+    width: 170px;
+    height: 100%;
+    position: relative;
+}
+
+.imageProfile > img{
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 15%;
+}
+
+.personInfo{
+    float: left;
+    padding-bottom: 3%;
+}
+
+.personInfo > div:first-child{
+    padding: 2% 0;
+}
+
+.personInfo > div:nth-child(2) > div{
+    padding: 5px;
+    border-bottom: 2px solid #c6c6c6;
+}
+
+.personInfo > div:nth-child(2) > div > div{
+    padding: 8px 0;
+}
+
+.personInfo > div:nth-child(2) > div > div:first-child{
+    font-weight: 501;
+    color: #787777;
+}
+
+
+
+
+
+footer{
+    background: #090909;
+    color: #898f9c;
+    text-align:center;
+}

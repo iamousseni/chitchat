@@ -1,0 +1,60 @@
+## GZIP CONTENUTI ##
+<IfModule mod_mime.c>
+ AddType application/x-javascript .js
+ AddType text/css .css
+</IfModule>
+<IfModule mod_deflate.c>
+ AddOutputFilterByType DEFLATE text/css application/x-javascript text/x-component text/html text/richtext image/svg+xml text/plain text/xsd text/xsl text/xml image/x-icon application/javascript
+ <IfModule mod_setenvif.c>
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+ </IfModule>
+ <IfModule mod_headers.c>
+  Header append Vary User-Agent env=!dont-vary
+ </IfModule>
+</IfModule>
+#SET ACCESS CONTROL ONLY FOR MY SITE (this website is temporaly)
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "https://www.chitchat.com"
+</IfModule>
+## GZIP CONTENUTI ##
+
+## CACHE SOFT ##
+<IfModule mod_headers.c>
+# 1 Anno = 2419200s = Never Expires
+<filesMatch "\.(ico)$">
+Header set Cache-Control "max-age=2419200s, public"
+</filesMatch>
+# 1 Mese = 2419200s
+<filesMatch "\.(css|pdf|flv|jpg|jpeg|png|gif|swf)$">
+Header set Cache-Control "max-age=2419200, public"
+</filesMatch>
+<FilesMatch "\.(bmp|css|flv|gif|ico|jpg|jpeg|js|pdf|png|svg|swf|tif|tiff)$">
+Header set Last-Modified "Wed, 11 Dec 2014 00:00:00 GMT"
+</FilesMatch>
+# 2.5 Giorni = 216000s
+<filesMatch "\.(js)$">
+Header set Cache-Control "max-age=650000, private"
+</filesMatch>
+</IfModule>
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
+RewriteRule ^(.*)$ - [E=BASE:%1]
+
+RewriteRule ^ImmaginiGalleryF/([0-9]+)x([0-9]+)x([^/]+) imgFIT.php?urlimmagine=$3&width=$1&height=$2&path=ImmaginiGallery [L]
+RewriteRule ^ImmaginiGalleryC/([0-9]+)x([0-9]+)x([^/]+) imgCUT.php?urlimmagine=$3&width=$1&height=$2&path=ImmaginiGallery [L]
+
+RewriteRule ^imagesF/([0-9]+)x([0-9]+)x([^/]+) imgFIT.php?urlimmagine=$3&width=$1&height=$2&path=images [L]
+RewriteRule ^imagesC/([0-9]+)x([0-9]+)x([^/]+) imgCUT.php?urlimmagine=$3&width=$1&height=$2&path=images [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php?params=$1 [L,NC,NE]
+
+AddType image/svg+xml svg svgz
+AddEncoding gzip svgz
+
+

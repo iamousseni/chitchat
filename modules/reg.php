@@ -1,4 +1,5 @@
 <?php
+    include 'Admin/include/config.php';
     $name = ucfirst(addslashes($_POST['name']));
     $surname = ucfirst(addslashes($_POST['surname']));
     $username = addslashes($_POST['username']);
@@ -37,7 +38,7 @@
             $messageToSend = file_get_contents('modules/confirm.html');
             
             $messageToSend = str_replace("@NAME", $name, $messageToSend);
-            $messageToSend = str_replace("@EMAIL", $email, $messageToSend);
+            $messageToSend = str_replace("@USERNAME", $username, $messageToSend);
             $messageToSend = str_replace("@DATECREATED", strtotime($dateHourCreated), $messageToSend);
             $invia = mail($email,$oggetto,$messageToSend,$intestazione,'-registration@chitchat.com');
             if($invia){

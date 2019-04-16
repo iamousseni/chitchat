@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'Admin/include/config.php';
 include 'Admin/include/routing.php';
 // FARE IL LOADING DI CARICAMENTO
 ?>

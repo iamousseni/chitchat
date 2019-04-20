@@ -1,12 +1,16 @@
+<?php
+include 'Admin/include/config.php';
+include 'Admin/classes/fileSystem.php';
+?>
 <div class="container-fluid bk-cc left completeProfile">
     <div class="col-6 container-complete left">
         <div class="imgProfile">
             <img src="https://images.unsplash.com/photo-1480914362564-9f2c2634e266?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="image profile">
         </div>
         <div class="container-edit">
-            <form action="" method="post">
-                <input type="hidden" name="imgProfile">
-                <input type="submit" name="edit" value="Edit Profile">
+            <form action="" method="post" enctype="multipart/form-data">
+                <input type="file" name="imgProfile" value="Edit Profile">
+                <input type="submit" name="edit" value="Aggiorna">
             </form>
         </div>
         <div class="container-edit-info txt-center">

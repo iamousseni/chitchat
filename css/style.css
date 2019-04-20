@@ -234,11 +234,7 @@ html,body{
     margin-bottom: 2%;
 }
 
-<<<<<<< HEAD
-.container-edit form input[type=file]{
-=======
 .container-edit form input[type=submit], .container-edit form input[type=file]{
->>>>>>> 8909bcc530acd2b20c526776ceb234febbc61da7
     outline: none;
     border-radius: 5px;
     border: none;
@@ -246,10 +242,6 @@ html,body{
     background: linear-gradient(to right, #045e32, #92cc25);
     color: #fff;
     font-weight: 600;
-}
-
-.container-edit form input[type=submit]{
-    display: none;
 }
 
 .container-edit-info p{
@@ -338,10 +330,6 @@ html,body{
     font-weight: 501;
     color: #787777;
 }
-
-
-
-
 
 footer{
     background: #090909;

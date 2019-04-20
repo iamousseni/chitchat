@@ -1,12 +1,19 @@
+<?php include "classes/functions.php"; ?>
+<?php if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST['edit'])){   
+    $uploadStatus = uploadPhotoToFolder('imgProfile','profiles/'.$_SESSION['username'], '');
+    
+    
+}?>
 <div class="container-fluid bk-cc left completeProfile">
     <div class="col-6 container-complete left">
         <div class="imgProfile">
             <img src="https://images.unsplash.com/photo-1480914362564-9f2c2634e266?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="image profile">
         </div>
         <div class="container-edit">
-            <form action="" method="post">
-                <input type="hidden" name="imgProfile">
-                <input type="submit" name="edit" value="Edit Profile">
+            <form action="./" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="MAX_FILE_SIZE" value="60000">
+                <input type="file" name="imgProfile" value="Edit Profile"><br>
+                <input type="submit" name="edit">
             </form>
         </div>
         <div class="container-edit-info txt-center">
@@ -15,7 +22,6 @@
                 a new one (JPG or PNG)
             </p>
         </div>
-
     </div>
     <div class="col-6 left container-bio">
         <h1>Talk About Yourself!</h1>

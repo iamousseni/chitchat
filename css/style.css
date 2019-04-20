@@ -234,7 +234,7 @@ html,body{
     margin-bottom: 2%;
 }
 
-.container-edit form input[type=submit]{
+.container-edit form input[type=file]{
     outline: none;
     border-radius: 5px;
     border: none;
@@ -242,6 +242,10 @@ html,body{
     background: linear-gradient(to right, #045e32, #92cc25);
     color: #fff;
     font-weight: 600;
+}
+
+.container-edit form input[type=submit]{
+    display: none;
 }
 
 .container-edit-info p{

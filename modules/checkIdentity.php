@@ -10,6 +10,8 @@ if(isset($_GET['u']) && isset($_GET['ds'])){
         $_SESSION['message'] = 'Errore! Questa richiesta di attivazione è scaduta';
         header('location: ./');
     }else{
+        
+
         header('location: completeProfile');
     }
 }

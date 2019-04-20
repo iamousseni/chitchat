@@ -45,12 +45,12 @@
                header('location: verifyEmail&e='.urlencode($email));
             }else{
                 $_SESSION['message'] = 'Errore! Email non è stato inviato correttamente, riprovare più tardi';
-                header('location: /');
+                header('location: ./');
             }
         }
     }else{
         $_SESSION['message'] = 'Errore! Registrazione utente, riprovare più tardi';
-        header('location: /');
+        header('location: ./');
     }
 
 

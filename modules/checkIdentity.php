@@ -17,6 +17,8 @@ if(isset($_GET['u']) && isset($_GET['ds'])){
             $_SESSION['message'] = 'Errore! Questa richiesta di attivazione è scaduta';
             header('location: ./');
         }else{
+            //in modo tale che da ora in poi so quale utente è attivo
+            setcookie('u', $username, time() + 36000, $_SERVER['BASE']);
             header('location: completeProfile');
         }
    /* }else{

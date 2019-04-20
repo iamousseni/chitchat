@@ -136,7 +136,7 @@ class FileSystem extends File{
             if(!getimagesize($userfile_tmp)){
                 return [false, 'IL file che si desidera caricare non è un immagine'];
             }else{
-                $extensionAllowed = ['jpeg', 'jpg', 'png', 'gif'];
+                $extensionAllowed = ['gif','jpg','jpe','jpeg','png'];
                 $tmpExtension = explode('.', $_FILES[$inputFileName]['name']);
                 $tmpExtension = end($tmpExtension);
                 if(!in_array($tmpExtension, $extensionAllowed)){
@@ -154,11 +154,11 @@ class FileSystem extends File{
         if($fileName === null)
             $userfile_name = $_FILES[$inputFileName]['name'];
         else
-            $userfile_name = $fileName;
+            $userfile_name = $fileName.'.'.$tmpExtension;
 
         //copio il file dalla sua posizione temporanea alla mia cartella upload
         if (move_uploaded_file($userfile_tmp, $pathUploadDirectory . '/' . $userfile_name)) {
-            return [true, 'File caricato con successo'];
+            return [true, $pathUploadDirectory . '/' . $userfile_name];
         }else{
             return [false, 'Operazione fallita'];
         }

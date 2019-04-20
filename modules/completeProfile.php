@@ -1,16 +1,44 @@
 <?php
 include 'Admin/include/config.php';
 include 'Admin/classes/fileSystem.php';
+
+if(isset($_POST['edit']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
+    $fileSystem = new FileSystem();
+    $fileSystem->createDirectory($_COOKIE['u'], 'profiles/' . $_COOKIE['u']);
+    $uploadStatus = $fileSystem->uploadFileFromForm('imgProfile', 'profiles/' . $_COOKIE['u'],$_COOKIE['u']);
+    if($uploadStatus[0]){
+        $_SESSION['userProfileImage'] =  $uploadStatus[1];
+        //ricarico per aggiornare l'immagine appena caricata
+        header('location: completeProfile');
+    }else{
+        $_SESSION['message'] = $uploadStatus[1];
+    }
+}
+
+if(isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
+    $userImageProfile = $_SESSION['userProfileImage'];
+    $bio = addslashes($_POST['bio']);
+    $username = $_COOKIE['u'];
+
+    $result = $mysqli->query("UPDATE utente SET pathImageProfile = '$userImageProfile', bio = '$bio' WHERE username = '$username';");
+
+    if(!$result){
+        $_SESSION['message'] = 'Errore, non è stato possibile aggiornare l\'immagine di profilo o la bio dell\'utente specificato';
+    }else{
+        header('location: home');
+    }
+}
+
 ?>
 <div class="container-fluid bk-cc left completeProfile">
     <div class="col-6 container-complete left">
         <div class="imgProfile">
-            <img src="https://images.unsplash.com/photo-1480914362564-9f2c2634e266?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="image profile">
+            <img src="<?php echo $_SESSION['userProfileImage']; ?>" alt="image profile">
         </div>
         <div class="container-edit">
             <form action="" method="post" enctype="multipart/form-data">
-                <input type="file" name="imgProfile" value="Edit Profile">
-                <input type="submit" name="edit" value="Aggiorna">
+                <input type="file" name="imgProfile">
+                <input type="submit" name="edit" id="edit" style="display:none">
             </form>
         </div>
         <div class="container-edit-info txt-center">
@@ -34,3 +62,28 @@ include 'Admin/classes/fileSystem.php';
         Chitchat helps you communicate and stay in touch with all your friends.
     </small>
 </footer>
+<script>
+    let inputFile = document.getElementsByName('imgProfile')[0];
+    inputFile.addEventListener('focus', function(e){
+        if(this.value != ''){
+            simulateClick('edit');
+        }
+    });
+
+
+    function simulateClick(id) {
+        var event = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+        });
+
+        var element = document.getElementById(id); 
+        var cancelled = !element.dispatchEvent(event);
+        if (!cancelled) {
+            console.log('clicked')
+        } else {
+            console.log('error')
+       }
+    }
+</script>

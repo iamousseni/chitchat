@@ -234,7 +234,11 @@ html,body{
     margin-bottom: 2%;
 }
 
+<<<<<<< HEAD
 .container-edit form input[type=file]{
+=======
+.container-edit form input[type=submit], .container-edit form input[type=file]{
+>>>>>>> 8909bcc530acd2b20c526776ceb234febbc61da7
     outline: none;
     border-radius: 5px;
     border: none;

@@ -89,15 +89,15 @@
                 <form action="login.php" method="post">
                     <div class="col-12 left mb-3">
                         <label class="block" for="username">Username</label>
-                        <input type="text" name="usename" placeholder="Username..." title="Insert Your Username" required>
+                        <input type="text" name="username" placeholder="Username..." title="Insert Your Username" required>
                     </div>
                     <div class="col-12 left mb-3">
                         <label class="block" for="password">Password</label>
-                        <input type="text" name="password" placeholder="*************" title="Insert Your Password" required>
+                        <input type="password" name="password" placeholder="*************" title="Insert Your Password" required>
                     </div>
                     <div class="col-12 left mb-3">
                         <div class="col-6 left">
-                            <label><input type="checkbox" name="term" title="Remain Connect" > Remember me</label>
+                            <label><input type="checkbox" name="remember" title="Remain Connect"> Remember me</label>
                         </div>
                         <div class="col-6 left">
                             <a href=""><span>Did you forget your password?</span></a>

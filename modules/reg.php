@@ -12,8 +12,8 @@
     $result = $mysqli->query("SELECT usename FROM utente WHERE username = '$username';");
     //allready exist
     if($result !== false){
-        $_SESSION['message'] = 'User with that username allready exist';
-        header('location: sign');
+        $_SESSION['message'] = 'User with that username already exist';
+        header('location: :/');
     }
 
     $result = $mysqli->query("INSERT INTO utente (username, nome, cognome, email, password, dataNascita, genere) VALUES ('$username', '$name', '$surname', '$email', '$password', '$dateBirth', '$gender');");
@@ -44,8 +44,8 @@
             if($invia){
                header('location: verifyEmail&e='.urlencode($email));
             }else{
-                $_SESSION['message'] = 'Errore! Email non è stato inviato correttamente, riprovare più tardi';
-                header('location: ./');
+               $_SESSION['message'] = 'Errore! Email non è stato inviato correttamente, riprovare più tardi';
+               header('location: ./');
             }
         }
     }else{

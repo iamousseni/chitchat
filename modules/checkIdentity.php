@@ -21,7 +21,7 @@ if(isset($_GET['u']) && isset($_GET['ds'])){
             header('location: ./');
         }else{
             //in modo tale che da ora in poi so quale utente è attivo
-            setcookie('u', $username, time() + 36000, $_SERVER['BASE']);
+            setcookie('u', $username, 0, $_SERVER['BASE']);
             header('location: completeProfile');
         }
    /* }else{

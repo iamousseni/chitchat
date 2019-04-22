@@ -42,7 +42,7 @@
             $messageToSend = str_replace("@DATECREATED", strtotime($dateHourCreated), $messageToSend);
             $invia = mail($email,$oggetto,$messageToSend,$intestazione,'-registration@chitchat.com');
             if($invia){
-               header('location: verifyEmail&e='.urlencode($email));
+               header('location: ../verifyEmail&e='.urlencode($email));
             }else{
                $_SESSION['message'] = 'Errore! Email non è stato inviato correttamente, riprovare più tardi';
                header('location: ./');

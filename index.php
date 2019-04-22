@@ -19,7 +19,7 @@ include 'Admin/include/routing.php';
 <body
     <?php echo $params[0] == 'sign' ? 'class="bk-cc"' : ''; ?>
 >
-    <?php include 'modules/'.$params[0].'.php'; ?>
+    <?php include 'modules/'.$uri.'.php'; ?>
 
 
 <!-- Bootstrap js -->

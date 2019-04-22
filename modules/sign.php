@@ -16,7 +16,7 @@
             <?php echo isset($_SESSION['message']) ? "<p>".$_SESSION['message']."</p>" : ''; ?>
             <div class="sign-up">
                 <h1>Sign Up</h1>
-                <form action="reg" method="post">
+                <form action="elaborator/reg" method="post">
                     <div class="col-12 left mb-3">
                         <div class="col-6 left">
                             <label class="block" for="name">First Name</label>
@@ -86,7 +86,7 @@
             </div>
             <div class="sign-in" style="display:none">
                 <h1>Sign In</h1>
-                <form action="login.php" method="post">
+                <form action="elaborator/login" method="post">
                     <div class="col-12 left mb-3">
                         <label class="block" for="username">Username</label>
                         <input type="text" name="username" placeholder="Username..." title="Insert Your Username" required>

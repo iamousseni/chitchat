@@ -1,43 +1,13 @@
-<?php
-include 'Admin/include/config.php';
-include 'Admin/classes/fileSystem.php';
-
-if (isset($_POST['edit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
-    $fileSystem = new FileSystem();
-    $fileSystem->createDirectory($_COOKIE['u'], 'profiles/' . $_COOKIE['u']);
-    $uploadStatus = $fileSystem->uploadFileFromForm('imgProfile', 'profiles/' . $_COOKIE['u'], $_COOKIE['u']);
-    if ($uploadStatus[0]) {
-        $_SESSION['userProfileImage'] =  $uploadStatus[1];
-        //ricarico per aggiornare l'immagine appena caricata
-        header('location: completeProfile');
-    } else {
-        $_SESSION['message'] = $uploadStatus[1];
-    }
-}
-
-if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
-    $userImageProfile = $_SESSION['userProfileImage'];
-    $bio = addslashes($_POST['bio']);
-    $username = $_COOKIE['u'];
-
-    $resultStatus = $mysqli->query("UPDATE utente SET pathImageProfile = '$userImageProfile', bio = '$bio' WHERE username = '$username';");
-
-    if ($mysqli->affected_rows == 0) {
-        $_SESSION['message'] = 'Errore, non è stato possibile aggiornare l\'immagine di profilo o la bio dell\'utente specificato';
-    } else {
-        header('location: home');
-    }
-}
-
-?>
 <div class="container-fluid bk-cc left completeProfile">
     <div class="col-6 container-complete left">
         <div class="imgProfile">
             <img src="<?php echo $_SESSION['userProfileImage']; ?>" alt="image profile">
         </div>
         <div class="container-edit">
-            <form action="" method="post" enctype="multipart/form-data">
-                <input type="file" name="imgProfile">
+            <?php echo $_SESSION['message']; ?>
+            <form action="elaborator/completeProfileElaborator" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="MAX_FILE_SIZE" value="60">
+                <input type="file" name="imgProfile" accept="image/gif, image/jpg, image/jpe, image/jpeg, image/png">
                 <input type="submit" name="edit" id="edit" style="display:none">
             </form>
         </div>
@@ -47,11 +17,10 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 a new one (JPG or PNG)
             </p>
         </div>
-
     </div>
     <div class="col-6 left container-bio">
         <h1>Talk About Yourself!</h1>
-        <form action="" method="post">
+        <form action="elaborator/completeProfileElaborator" method="post">
             <textarea name="bio" maxlength="100000" placeholder="I'm an incredible person..."></textarea>
             <input type="submit" name="submit" value="Continue">
         </form>
@@ -64,7 +33,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 </footer>
 <script>
     let inputFile = document.getElementsByName('imgProfile')[0];
-    inputFile.addEventListener('focus', function(e) {
+    inputFile.addEventListener('change', function(e) {
         if (this.value != '') {
             simulateClick('edit');
         }

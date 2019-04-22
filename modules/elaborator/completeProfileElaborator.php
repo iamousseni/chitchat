@@ -15,7 +15,7 @@ if (isset($_POST['edit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
-    $userImageProfile = $_POST['imgProfile'];
+    $userImageProfile = $_SESSION['userProfileImage'];
     $bio = addslashes($_POST['bio']);
     $username = $_COOKIE['u'];
 

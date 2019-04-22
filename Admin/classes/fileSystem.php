@@ -50,7 +50,7 @@ class File extends Directorys{
         $this->pathFile = $pathFile;
     }
 
-    public function getPathFile($pathFile){
+    public function getPathFile(){
         return $this->pathFile;
     }
 }
@@ -143,8 +143,8 @@ class FileSystem extends File{
                     return [false, 'Estensione non ammessa'];
                 }else{
                     //limito la dimensione dell'immagine a 4MB per questioni di gestione
-                    if($_FILES[$inputFileName]['size'] > 4194304){
-                        return [false, 'Dimensione immagine superiore a 4MB'];
+                    if($_FILES[$inputFileName]['size'] > 6291456){
+                        return [false, 'Dimensione immagine superiore a 6MB'];
                     }
                 }
             }

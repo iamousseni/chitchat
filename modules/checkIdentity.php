@@ -5,7 +5,7 @@ if(isset($_GET['u']) && isset($_GET['ds'])){
     $dataRichiesta = addslashes($_GET['ds']);
     $dataRichiesta = date("Y-m-d H:i:s", $dataRichiesta);
 /*
-  -->  eventualità che gli eventi non siano possibili decommentare questa parte <--
+  -->  eventualità che gli eventi via db non siano possibili decommentare questa parte <--
 
     $dataRichiesta = new DateTime(date("Y-m-d H:i:s", $dataRichiesta));
     $now = new DateTime(date('Y-m-d H:i:s'));

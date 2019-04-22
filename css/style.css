@@ -331,6 +331,59 @@ html,body{
     color: #787777;
 }
 
+/* forgot page */
+.containerForgot{
+    display:flex;
+    align-items: center;
+    height: 100%;
+}
+
+.containerForgot > div:nth-child(2) > div:first-child{
+    color: #fff;
+}
+
+.containerForgot > div:nth-child(2) > div:first-child > h1{
+    font-size: 80px;
+    line-height: 80px;
+    margin-bottom: 2%;
+    color: #fff;
+}
+
+.containerForgot > div:nth-child(2) > div:first-child > h2{
+    font-size: 30px;
+    line-height: 30px;
+    color: #fff;
+}
+
+.containerForgot > div:nth-child(2) > div:nth-child(2) > form > input:not([type=submit]){
+    display: block;
+    width: 40%;
+    height: 25px;
+    background: transparent;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #fff;
+    line-height: 1.2;
+    padding: 20px 0;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #999999;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+.containerForgot > div:nth-child(2) > div:nth-child(2) > form > input[type=submit]{
+    width:40%;
+    border-radius: 50px;
+    border: none;
+    padding: 13px;
+    background: none;
+    color: #fff;
+    font-size: 18px;
+    outline: none;
+    background: linear-gradient(to right, #045e32, #92cc25);
+}
+
 footer{
     background: #090909;
     color: #898f9c;

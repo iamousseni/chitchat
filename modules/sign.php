@@ -100,7 +100,7 @@
                             <label><input type="checkbox" name="remember" title="Remain Connect"> Remember me</label>
                         </div>
                         <div class="col-6 left">
-                            <a href=""><span>Did you forget your password?</span></a>
+                            <a href="forgot"><span>Did you forget your password?</span></a>
                         </div>
                     </div>
                     <input type="submit" name="log" style="display:none" id="log">

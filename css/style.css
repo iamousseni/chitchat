@@ -389,3 +389,87 @@ footer{
     color: #898f9c;
     text-align:center;
 }
+
+
+/* home.php */
+.container-chitchat{
+    display: flex;
+    align-items: flex-start;
+    padding: 0!important;
+    height: 100%;
+}
+
+.user-containerSetting{
+    background: #090909;
+    /*filter: blur(3px);
+    -webkit-filter: blur(3px);*/
+    width:100%;
+    height: 100%;
+    color: #fff;
+}
+
+.user-containerSetting > div:first-child{
+    width: 100%;
+    margin: 20% auto;
+}
+
+.user-containerSetting > div:first-child > div:first-child{
+    width: 130px;
+    height: 130px;
+    text-align: center;
+    margin: 5% auto;
+}
+
+.user-containerSetting > div:first-child > div:first-child > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #509f2e;
+}
+
+.user-containerSetting > div:first-child > div:nth-child(2){
+    color: #fff;
+    text-align: center;
+    font-size: 19px;
+}
+
+.user-containerSetting > div:nth-child(2) > ul{
+    list-style: none;
+    padding: 0;
+}
+
+.user-containerSetting > div:nth-child(2) > ul > li{
+    padding: 18px 10px;
+    font-size: 19px;
+}
+
+.user-containerSetting > div:nth-child(2) > ul > li > i{
+    font-size: 25px;
+    padding-right: 5%;
+}
+
+.container-chitchat > div:nth-child(2) > div:first-child{
+    padding: 8%;
+}
+
+.container-chitchat > div:nth-child(2) > div:first-child > div:first-child{
+    margin-bottom: 5%;
+}
+
+.container-chitchat > div:nth-child(2) > div:first-child > div:first-child > h1{
+    font-weight: bolder;
+}
+
+.container-chitchat > div:nth-child(2) > div:first-child > div:nth-child(2) > form button[type=submit]{
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    color: #abacad;
+}
+
+.container-chitchat > div:nth-child(2) > div:first-child > div:nth-child(2) > form input[type=search]{
+    border: none;
+    border-bottom: 2px solid #abacad;
+    width: 80%;
+}

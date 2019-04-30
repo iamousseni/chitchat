@@ -17,10 +17,9 @@ include 'Admin/include/routing.php';
     <title>Chitchat - where messaging takes place...</title>
 </head>
 <body
-    <?php echo $params[0] == 'sign' ? 'class="bk-cc"' : ''; ?>
+<?php echo $uri == 'sign' ? 'class="bk-cc"' : ''; ?>
 >
     <?php include 'modules/'.$uri.'.php'; ?>
-
 
 <!-- Bootstrap js -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

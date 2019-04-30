@@ -16,14 +16,14 @@ if($usercheck->num_rows == 1){
 
    //check that the cookie has been set up successfully because this is important to ensure the user's actual access to the system
    if(isset($_COOKIE['u'])){
-       heaeder('location: home');
+        header('location: home');
    }else{
        $_SESSION['message'] = 'Errore cookie! non è stato possibile effettaure l\'accesso al sistema, si prega di riprovare';
-       header('location: ./');
+       header('location: ../');
    }
 
 }else{
     $_SESSION['message'] = 'Errore! Controllare i dati inseriti e verificare di aver già attivato l\'account';
-    header('location: ./');
+    header('location: ../');
 }
 ?>

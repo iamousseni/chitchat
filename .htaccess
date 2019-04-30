@@ -48,8 +48,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^((?!API).*)$ index.php?params=$1 [L,NC,NE]
 
-# old one -> RewriteRule ^(.*)$ index.php?params=$1 [L,NC,NE]
-
 RewriteRule API/(.*)$ modules/API/$1 [L,NC,NE]
 
 AddType image/svg+xml svg svgz

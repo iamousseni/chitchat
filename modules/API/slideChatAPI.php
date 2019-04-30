@@ -1,7 +1,8 @@
 <?php
     include  '../../Admin/include/config.php';
     $username = $_COOKIE['u'];
-    $slideChat = $mysqli->query("SELECT u1.codUtente AS mittente, ne2.codUtente AS destinatario, u1.testo, u2.maggiore FROM messaggio AS u1 INNER JOIN (SELECT MAX(dataOraInvio) AS maggiore FROM `messaggio` GROUP BY codChat HAVING MAX(messaggio.dataOraInvio) ORDER BY maggiore DESC) AS u2 ON u1.dataOraInvio = u2.maggiore INNER JOIN messaggio AS ne2 ON u1.codChat = ne2.codChat GROUP BY u2.maggiore HAVING u1.codUtente IN ('$username')  OR ne2.codUtente IN ('$username');");
+    $slideChat = $mysqli->query("SELECT userHeader.nome, userHeader.cognome, userHeader.pathImageProfile, user2.codUtente, user1.codChat, h.codUtente AS lastUserSender, h.testo, h.pathFile, h.maggiore AS dataOraInvio FROM appartenere AS user1 INNER JOIN appartenere AS user2 ON user1.codChat = user2.codChat INNER JOIN utente AS userHeader ON userHeader.username = user2.codUtente INNER JOIN (SELECT * FROM messaggio INNER JOIN 
+    (SELECT MAX(dataOraInvio) AS maggiore FROM `messaggio` GROUP BY codChat ORDER BY maggiore DESC) as header ON messaggio.dataOraInvio = header.maggiore GROUP BY messaggio.codChat) AS h ON user1.codChat = h.codChat WHERE user1.codUtente = 'iamousseni' GROUP BY user1.codChat;");
 
     for($chats = []; $row = $slideChat->fetch_assoc();){
         $chats[] = $row;
@@ -9,6 +10,4 @@
 
     header('Content-Type: application/json');
     echo json_encode($chats);
-    
-
 ?>

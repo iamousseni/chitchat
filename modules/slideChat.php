@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div id="chats">
+<div id="chats" class="container-fluid">
 <?php
     $json = file_get_contents('http://localhost/chitchat/API/slideChatAPI.php?u='.$_COOKIE['u'].'&limit=10');
     $objs = json_decode($json);
@@ -23,17 +23,18 @@
         
         $message = $obj->testo == null ? "<img src='".$obj->pathFile."'>" : $obj->testo;
         $result .= '
-        <div>
-            <div>
+        <hr>
+        <div class="slide-chat row">
+            <div class="col-md-3">
                 <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'">
             </div>
-            <div>
+            <div class="col-md-9">
                 <div>
                     <strong><span>'.$obj->nome.' '.$obj->cognome.'</span></strong>
-                    <span>'.date('d', strtotime($obj->dataOraInvio)).' '.$month[date('n', strtotime($obj->dataOraInvio))].'</span>
                 </div>
                 <div>
                     <span>'.$message.'</span>
+                    <span class="date">'.date('d', strtotime($obj->dataOraInvio)).' '.$month[date('n', strtotime($obj->dataOraInvio))].'</span>
                 </div>
             </div>
         </div>'

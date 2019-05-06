@@ -14,6 +14,9 @@ if($usercheck->num_rows == 1){
         // Deleted when browser closes
         setcookie('u', $username, 0,  $_SERVER['BASE']);
     }
+    $user = $usercheck->fetch_assoc();
+    $_SESSION['nome'] = $user["nome"];
+    $_SESSION['cognome'] = $user["cognome"];
 
     // Check that the cookie has been set up successfully
     // 'cause two is megl che one

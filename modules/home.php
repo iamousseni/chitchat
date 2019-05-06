@@ -8,7 +8,7 @@
                 <img src="https://images.unsplash.com/photo-1480535339474-e083439a320d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80" alt="<?php echo $username; ?>">
             </div>
             <div>
-                <span>Ousseni Bara</span>
+                <span><?=$_SESSION["nome"]?> <?=$_SESSION["cognome"]?></span>
             </div>
         </div>
 

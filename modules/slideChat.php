@@ -13,7 +13,8 @@
 
 <div id="chats">
 <?php
-    $json = file_get_contents('http://localhost/chitchat/API/slideChatAPI.php?u=iamousseni&limit=10');
+    $API_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $json = file_get_contents($API_link.'/API/slideChatAPI.php?u=iamousseni&limit=10');
     $objs = json_decode($json);
     
     $month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
@@ -61,10 +62,29 @@ function getCookie(cname) {
 }
     
 function createChat(chat){
-    
     let date = new Date(chat['dataOraInvio']);
     const month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
     let message = chat['testo'] == null ? "<img src='"+chat['pathFile']+"'>" : chat['testo']; 
+
+    setInterval(() => {
+    let chats;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if(this.responseText!= undefined){
+                     chats = JSON.parse(this.responseText);
+                     
+                     if(chats[0]['dataOraInvio'] != localStorage.getItem('chat'+chat['id'])){
+                        localStorage.setItem('update',1);
+                        message = chats[0]['testo'] == null ? "<img src='"+chats[0]['pathFile']+"'>" : chats[0]['testo']; 
+                    }
+                }
+            }
+        };
+        xhttp.open("GET", "API/chatAPI.php?u="+getCookie('u')+'&idChat='+chat['codChat']+'&limit=10', true);
+        xhttp.send();
+    }, 1000);
+
     let result = `
         <div>
             <div>
@@ -81,25 +101,6 @@ function createChat(chat){
             </div>
         </div>`
     ;
-
-    setInterval(() => {
-    let chats;
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                if(this.responseText!= undefined){
-                     chats = JSON.parse(this.responseText);
-                     
-                     if(chats[0]['dataOraInvio'] != localStorage.getItem('chat'+chat['id'])){
-                        localStorage.setItem('chat'+chat['id'], chats[0]['dataOraInvio']);
-                    }
-                    
-                }
-            }
-        };
-        xhttp.open("GET", "API/chatAPI.php?u="+getCookie('u')+'&idChat='+chat['id']+'&limit=10', true);
-        xhttp.send();
-    }, 1000);
 
     return result;
 }
@@ -122,7 +123,9 @@ setInterval(() => {
                 if(chats[chats.length - 1]['id'] != localStorage.getItem('lastChat')){
                     document.getElementById('chats').innerHTML = body;
                     localStorage.setItem('lastChat', chats[chats.length -1]['id']);
-                    console.log('nuova chat');
+                }else if(localStorage.getItem('update') == 1){
+                    document.getElementById('chats').innerHTML = body;
+                    localStorage.setItem('update',0);
                 }
             }
         };

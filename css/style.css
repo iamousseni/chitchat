@@ -473,3 +473,23 @@ footer{
     border-bottom: 2px solid #abacad;
     width: 80%;
 }
+
+#message {
+    color: lightgreen;
+}
+
+.slide-chat img {
+    width: 5em;
+    border-radius: 100%;
+    padding: 1em 0;
+}
+
+.slide-chat div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.date {
+    color: #aaa;
+}

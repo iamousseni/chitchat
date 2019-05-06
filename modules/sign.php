@@ -13,7 +13,7 @@
             <label class="btnreg" id="regNow" for="name">Register Now!</label>
         </div>
         <div class="col-lg-6 frm-sign left">
-            <?php echo isset($_SESSION['message']) ? "<p>".$_SESSION['message']."</p>" : ''; ?>
+            <?php echo isset($_SESSION['message']) ? "<p id='message'>".$_SESSION['message']."</p>" : ''; ?>
             <div class="sign-up">
                 <h1>Sign Up</h1>
                 <form action="elaborator/reg" method="post">

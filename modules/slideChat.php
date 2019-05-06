@@ -13,7 +13,7 @@
 
 <div id="chats">
 <?php
-    $json = file_get_contents('http://localhost/chitchat/API/slideChatAPI.php?u=iamousseni&limit=10');
+    $json = file_get_contents('http://localhost/chitchat/API/slideChatAPI.php?u='.$_COOKIE['u'].'&limit=10');
     $objs = json_decode($json);
     
     $month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];

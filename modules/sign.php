@@ -44,12 +44,6 @@
                         <div>
                             <select name="day" class="w33" id="day" required>
                                 <option value="Giorno" disabled>Day</option>
-								<?php
-									for($x=0;$x<31;$x++)
-									{
-										echo "<option value=".date("j",mktime(0,0,0,0,($x+1),1977)).">".date("j",mktime(0,0,0,0,($x+1),1977))."</option>";
-									}
-								?>
                             </select>
                             <select name="month" class="w33" onchange="return date(this.value,fr.year.value)" required>
 								<option value="Mese" disabled>Month</option>

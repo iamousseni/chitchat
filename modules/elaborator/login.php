@@ -7,16 +7,16 @@ $password = addslashes($_POST['password']);
 $usercheck = $mysqli->query("SELECT * FROM utente WHERE username = '$username' AND password = '$password' AND active = '1';");
 
 if($usercheck->num_rows == 1){
+    $user = $usercheck->fetch_assoc();
     if(isset($_POST['remember'])){
         // Set deadline (31 days) if remember
         setcookie('u', $username, time() + 3600 * 24 * 31, $_SERVER['BASE']);
     }else{
         // Deleted when browser closes
         setcookie('u', $username, 0,  $_SERVER['BASE']);
+        $_SESSION['nome'] = $user["nome"];
+        $_SESSION['cognome'] = $user["cognome"];
     }
-    $user = $usercheck->fetch_assoc();
-    $_SESSION['nome'] = $user["nome"];
-    $_SESSION['cognome'] = $user["cognome"];
 
     // Check that the cookie has been set up successfully
     // 'cause two is megl che one

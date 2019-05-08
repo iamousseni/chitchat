@@ -14,22 +14,28 @@
 
         <div>
             <ul>
-                <li>
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </li>
-                <li>
-                    <i class="far fa-comments"></i>
-                    <span>Chat</span>
-                </li>
-                <li>
-                    <i class="fas fa-gamepad"></i>
-                    <span>Game</span>
-                </li>
-                <li>
-                <i class="fas fa-user-cog"></i>
-                    <span>Settings</span>
-                </li>
+                    <li>
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </li>
+                    <li>
+                        <i class="far fa-comments"></i>
+                        <span>Chat</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-gamepad"></i>
+                        <span>Game</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-user-cog"></i>
+                        <span>Settings</span>
+                    </li>
+                    <a href="elaborator/logout">
+                        <li>
+                            <i class="fas fa-door-open"></i>
+                            <span>Logout</span>
+                        </li>
+                    </a>
             </ul>
         </div>
     </div>

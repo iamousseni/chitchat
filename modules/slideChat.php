@@ -75,8 +75,11 @@ function createChat(chat){
                      chats = JSON.parse(this.responseText);
                      
                      if(chats[0]['dataOraInvio'] != localStorage.getItem('chat'+chat['id'])){
-                        localStorage.setItem('update',1);
+                        localStorage.setItem('updates','1');
+                        
                         message = chats[0]['testo'] == null ? "<img src='"+chats[0]['pathFile']+"'>" : chats[0]['testo']; 
+                    }else{
+                        localStorage.setItem('updates','0');
                     }
                 }
             }
@@ -123,9 +126,9 @@ setInterval(() => {
                 if(chats[chats.length - 1]['id'] != localStorage.getItem('lastChat')){
                     document.getElementById('chats').innerHTML = body;
                     localStorage.setItem('lastChat', chats[chats.length -1]['id']);
-                }else if(localStorage.getItem('update') == 1){
+                }else if(localStorage.getItem('updates') == '1'){
+                    localStorage.setItem('updates','0');
                     document.getElementById('chats').innerHTML = body;
-                    localStorage.setItem('update',0);
                 }
             }
         };

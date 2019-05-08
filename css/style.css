@@ -439,12 +439,12 @@ footer{
     padding: 0;
 }
 
-.user-containerSetting > div:nth-child(2) > ul > li{
+.user-containerSetting > div:nth-child(2) > ul li{
     padding: 18px 10px;
     font-size: 19px;
 }
 
-.user-containerSetting > div:nth-child(2) > ul > li > i{
+.user-containerSetting > div:nth-child(2) > ul li > i{
     font-size: 25px;
     padding-right: 5%;
 }

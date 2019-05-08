@@ -16,7 +16,7 @@
             <?php echo isset($_SESSION['message']) ? "<p id='message'>".$_SESSION['message']."</p>" : ''; ?>
             <div class="sign-up">
                 <h1>Sign Up</h1>
-                <form action="elaborator/reg" method="post">
+                <form action="elaborator/reg" method="post" name="fr" id="fr">
                     <div class="col-12 left mb-3">
                         <div class="col-6 left">
                             <label class="block" for="name">First Name</label>
@@ -51,7 +51,7 @@
 									}
 								?>
                             </select>
-                            <select name="month" class="w33" required>
+                            <select name="month" class="w33" onchange="return date(this.value,fr.year.value)" required>
 								<option value="Mese" disabled>Month</option>
 								<?php
 									for($x=0;$x<12;$x++)
@@ -60,7 +60,7 @@
 									}
 								?>
 							</select>
-							<select name="year" class="w32" required>
+							<select name="year" class="w32" onchange="return date(fr.month.value,this.value)" required>
 								<option value="Anno" disabled>Year</option>
 								<?php
 									for($x=0;$x<48;$x++)
@@ -117,7 +117,7 @@
         </div>
     </div>
 </div>
-
+<script src="js/dateValidator.js"></script>
 <script>
     //TO DO 06/04/2019
     //check with ajax if username that he wrote allready exist

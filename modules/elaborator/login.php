@@ -1,7 +1,7 @@
 <?php
 include  'Admin/include/config.php';
-$username = addslashes($_POST['username']);
-$password = addslashes($_POST['password']);
+$username = htmlspecialchars(addslashes($_POST['username']));
+$password = htmlspecialchars(addslashes($_POST['password']));
 
 //check if that user exist
 $usercheck = $mysqli->query("SELECT * FROM utente WHERE username = '$username' AND password = '$password' AND active = '1';");
@@ -14,9 +14,9 @@ if($usercheck->num_rows == 1){
     }else{
         // Deleted when browser closes
         setcookie('u', $username, 0,  $_SERVER['BASE']);
-        $_SESSION['nome'] = $user["nome"];
-        $_SESSION['cognome'] = $user["cognome"];
     }
+    $_SESSION['nome'] = $user["nome"];
+    $_SESSION['cognome'] = $user["cognome"];
 
     // Check that the cookie has been set up successfully
     // 'cause two is megl che one

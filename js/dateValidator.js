@@ -1,7 +1,6 @@
 function date(mese,anno){
-    
-    var bis,giorno=0,option;
-    bis=anno%4;
+    var bis,option;
+    var bis=anno%4;
 
         if(mese==1 || mese==3 || mese==5|| mese==7 || mese==8  || mese==10  || mese==12)
             days = 31;
@@ -16,6 +15,4 @@ function date(mese,anno){
             option+="<option value="+(i+1)+">"+(i+1)+"</option>";
         }  
         document.getElementById("day").innerHTML=option;
-        
-
 }

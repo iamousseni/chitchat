@@ -1,12 +1,12 @@
 <?php
     include 'Admin/include/config.php';
-    $name = ucfirst(addslashes($_POST['name']));
-    $surname = ucfirst(addslashes($_POST['surname']));
-    $username = addslashes($_POST['username']);
-    $email = addslashes($_POST['email']);
-    $password = addslashes($_POST['password']);
+    $name = htmlspecialchars(ucfirst(addslashes($_POST['name'])));
+    $surname = htmlspecialchars(ucfirst(addslashes($_POST['surname'])));
+    $username = htmlspecialchars(addslashes($_POST['username']));
+    $email = htmlspecialchars(addslashes($_POST['email']));
+    $password = htmlspecialchars(addslashes($_POST['password']));
     $dateBirth = addslashes($_POST['year']).'-'.addslashes($_POST['month']).'-'.addslashes($_POST['day']);
-    $gender = addslashes($_POST['gender']);
+    $gender = htmlspecialchars(addslashes($_POST['gender']));
 
     //check if user already exist
     $result = $mysqli->query("SELECT usename FROM utente WHERE username = '$username';");

@@ -1,6 +1,6 @@
 <?php
 include 'Admin/include/config.php';
-$username = addslashes($_POST['username']);
+$username = htmlspecialchars(addslashes($_POST['username']));
 $result = $mysqli->query("SELECT email, password FROM utente WHERE username = '$username';");
 
 if($result->num_rows == 1){

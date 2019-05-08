@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div id="chats container-fluid">
+<div id="chats" class="container-fluid">
 <?php
     $API_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $json = file_get_contents($API_link.'/API/slideChatAPI.php?u='.$_COOKIE["u"].'&limit=10');
@@ -21,31 +21,41 @@
     $result = '';
     
     foreach($objs as $obj){
-        
-        $message = $obj->testo == null ? "<img src='".$obj->pathFile."'>" : $obj->testo;
+        $message = $obj->testo == null ? "📷 Foto" : $obj->testo;
+        //if the string consists of more than 30 characters then I show only part of the text
+        $lastUserSender = $obj->lastUserSender == $_COOKIE['u'] ? 'Tu: ' : $obj->nome.': ';
+        $message = $lastUserSender.$message;
+        $message = strlen($message) > 40 ? substr(htmlspecialchars($message), 0, 40).'...' : $message;
         $result .= '
         <hr>
-        <div class="slide-chat row">
-            <div class="col-md-3">
-                <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'">
+        <div class="slide-chat">
+            <div>
+                <div>
+                    <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'">
+                </div>
             </div>
-            <div class="col-md-9">
+            <div>
                 <div>
                     <strong><span>'.$obj->nome.' '.$obj->cognome.'</span></strong>
+                    <span>'.date('d', strtotime($obj->dataOraInvio)).' '.$month[date('n', strtotime($obj->dataOraInvio))].'</span>
                 </div>
                 <div>
                     <span>'.$message.'</span>
-                    <span class="date">'.date('d', strtotime($obj->dataOraInvio)).' '.$month[date('n', strtotime($obj->dataOraInvio))].'</span>
                 </div>
             </div>
-        </div>'
-    ;
+        </div>
+    ';
     }
 
     echo $result;
 ?>
 </div>
+
 <script>
+
+var htmlspecialchars = function(string) {
+    return string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+};
 
 function getCookie(cname) {
   var name = cname + "=";
@@ -66,33 +76,23 @@ function createChat(chat){
     let date = new Date(chat['dataOraInvio']);
     const month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
     let message = chat['testo'] == null ? "<img src='"+chat['pathFile']+"'>" : chat['testo']; 
-
-    setInterval(() => {
-    let chats;
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                if(this.responseText!= undefined){
-                     chats = JSON.parse(this.responseText);
-                     
-                     if(chats[0]['dataOraInvio'] != localStorage.getItem('chat'+chat['id'])){
-                        localStorage.setItem('updates','1');
-                        
-                        message = chats[0]['testo'] == null ? "<img src='"+chats[0]['pathFile']+"'>" : chats[0]['testo']; 
-                    }else{
-                        localStorage.setItem('updates','0');
-                    }
-                }
-            }
-        };
-        xhttp.open("GET", "API/chatAPI.php?u="+getCookie('u')+'&idChat='+chat['codChat']+'&limit=10', true);
-        xhttp.send();
-    }, 1000);
-
+    let lastUserSender = chat['lastUserSender'] == getCookie('u') ? 'Tu: ' : chat['nome']+': ';
+    if(chat['dataOraInvio'] != localStorage.getItem('chat'+chat['id'])){
+        localStorage.setItem('updates','1');
+        localStorage.setItem('chat'+chat['id'],chat['dataOraInvio']);
+        message = chat['testo'] == null ? "📷 Foto" : chat['testo'];
+    }
+    //if the string consists of more than 40 characters then I show only part of the text
+    message = htmlspecialchars(message)+lastUserSender;
+    message = message.length > 40 : message.substring(0, 40)+'...' : message;   
+    
     let result = `
-        <div>
+        <hr>
+        <div class="slide-chat">
             <div>
-                <img src="`+chat['pathImageProfile']+`" alt="`+chat['codUtente']+`">
+                <div>
+                    <img src="`+chat['pathImageProfile']+`" alt="`+chat['codUtente']+`">
+                </div>
             </div>
             <div>
                 <div>
@@ -103,8 +103,8 @@ function createChat(chat){
                     <span>`+message+`</span>
                 </div>
             </div>
-        </div>`
-    ;
+        </div>
+    `;
 
     return result;
 }
@@ -124,6 +124,7 @@ setInterval(() => {
                     }
                 }
 
+                //detect if there is a new chat
                 if(chats[chats.length - 1]['id'] != localStorage.getItem('lastChat')){
                     document.getElementById('chats').innerHTML = body;
                     localStorage.setItem('lastChat', chats[chats.length -1]['id']);
@@ -131,6 +132,7 @@ setInterval(() => {
                     localStorage.setItem('updates','0');
                     document.getElementById('chats').innerHTML = body;
                 }
+                
             }
         };
         xhttp.open("GET", "API/slideChatAPI.php?u="+getCookie('u')+'&limit=10', true);

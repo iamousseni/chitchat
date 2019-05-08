@@ -13,6 +13,7 @@
 
 <div id="chats" class="container-fluid">
 <?php
+
     $API_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $json = file_get_contents($API_link.'/API/slideChatAPI.php?u='.$_COOKIE["u"].'&limit=10');
     $objs = json_decode($json);
@@ -26,6 +27,10 @@
         $lastUserSender = $obj->lastUserSender == $_COOKIE['u'] ? 'Tu: ' : $obj->nome.': ';
         $message = $lastUserSender.$message;
         $message = strlen($message) > 40 ? substr(htmlspecialchars($message), 0, 40).'...' : $message;
+
+        $interval = date('d') - date('d', strtotime($obj->dataOraInvio));
+        $dataOraInvio = $interval > 0 ? date('d', strtotime($obj->dataOraInvio)).' '.$month[date('n', strtotime($obj->dataOraInvio))] : date('H:i', strtotime($obj->dataOraInvio));
+        
         $result .= '
         <hr>
         <div class="slide-chat">
@@ -37,7 +42,7 @@
             <div>
                 <div>
                     <strong><span>'.$obj->nome.' '.$obj->cognome.'</span></strong>
-                    <span>'.date('d', strtotime($obj->dataOraInvio)).' '.$month[date('n', strtotime($obj->dataOraInvio))].'</span>
+                    <span>'.$dataOraInvio.'</span>
                 </div>
                 <div>
                     <span>'.$message.'</span>
@@ -48,6 +53,7 @@
     }
 
     echo $result;
+    
 ?>
 </div>
 
@@ -74,17 +80,21 @@ function getCookie(cname) {
     
 function createChat(chat){
     let date = new Date(chat['dataOraInvio']);
-    const month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
-    let message = chat['testo'] == null ? "<img src='"+chat['pathFile']+"'>" : chat['testo']; 
+    let now = new Date();
+    let interval = now.getDate() - date.getDate();
+    let dataOraInvio = interval > 0 ? date.getDate()+` `+month[date.getMonth()] : ('0'+date.getHours()).slice(-2)+':'+('0'+date.getMinutes()).slice(-2);
+
+    const month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']; 
     let lastUserSender = chat['lastUserSender'] == getCookie('u') ? 'Tu: ' : chat['nome']+': ';
     if(chat['dataOraInvio'] != localStorage.getItem('chat'+chat['id'])){
         localStorage.setItem('updates','1');
         localStorage.setItem('chat'+chat['id'],chat['dataOraInvio']);
-        message = chat['testo'] == null ? "📷 Foto" : chat['testo'];
     }
+
     //if the string consists of more than 40 characters then I show only part of the text
-    message = htmlspecialchars(message)+lastUserSender;
-    message = message.length > 40 : message.substring(0, 40)+'...' : message;   
+    message = chat['testo'] == null ? "📷 Foto" : chat['testo'];
+    message = lastUserSender+htmlspecialchars(message);
+    message = message.length > 40 ? message.substring(0, 40)+'...' : message;   
     
     let result = `
         <hr>
@@ -97,7 +107,7 @@ function createChat(chat){
             <div>
                 <div>
                     <strong><span>`+chat['nome']+` `+chat['cognome']+`</span></strong>
-                    <span>`+date.getDate()+` `+month[date.getMonth()]+`</span>
+                    <span>`+dataOraInvio+`</span>
                 </div>
                 <div>
                     <span>`+message+`</span>

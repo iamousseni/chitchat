@@ -86,7 +86,7 @@ html,body{
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
     margin-bottom: 45px;
-    color: #d4d4d4; 
+    color: #d4d4d4;
 }
 
 .btnreg{
@@ -444,7 +444,7 @@ footer{
     font-size: 19px;
 }
 
-.user-containerSetting > div:nth-child(2) > ul li > i{
+.user-containerSetting > div:nth-child(2) > ul > li i{
     font-size: 25px;
     padding-right: 5%;
 }
@@ -459,19 +459,6 @@ footer{
 
 .container-chitchat > div:nth-child(2) > div:first-child > div:first-child > h1{
     font-weight: bolder;
-}
-
-.container-chitchat > div:nth-child(2) > div:first-child > div:nth-child(2) > form button[type=submit]{
-    border: none;
-    background: transparent;
-    font-size: 25px;
-    color: #abacad;
-}
-
-.container-chitchat > div:nth-child(2) > div:first-child > div:nth-child(2) > form input[type=search]{
-    border: none;
-    border-bottom: 2px solid #abacad;
-    width: 80%;
 }
 
 #message {
@@ -540,10 +527,14 @@ footer{
     color: #717070;
 }
 
-
-
-
-
 .date {
     color: #aaa;
+}
+
+a {
+  color: white !important;
+}
+a:hover {
+  color: #8dc28a !important;
+  text-decoration: none !important;
 }

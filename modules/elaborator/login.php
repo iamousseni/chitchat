@@ -17,6 +17,7 @@ if($usercheck->num_rows == 1){
     }
     $_SESSION['nome'] = $user["nome"];
     $_SESSION['cognome'] = $user["cognome"];
+    $_SESSION['imageProfile'] = $user['pathImageProfile'];
 
     // Check that the cookie has been set up successfully
     // 'cause two is megl che one

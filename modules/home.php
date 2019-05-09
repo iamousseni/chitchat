@@ -1,11 +1,12 @@
 <?php
     $username = $_COOKIE['u'];
+    $_SESSION['imageProfile'] = isset($_SESSION['imageProfile']) ? $_SESSION['imageProfile'] : 'https://images.unsplash.com/photo-1480535339474-e083439a320d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60';   
 ?>
 <div class="container-fluid container-chitchat">
     <div class="col-2 user-containerSetting">
         <div>
             <div>
-                <img src="https://images.unsplash.com/photo-1480535339474-e083439a320d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80" alt="<?php echo $username; ?>">
+                <img src="<?php echo $_SESSION['imageProfile']; ?>" alt="<?php echo $username; ?>">
             </div>
             <div>
                 <span><?=$_SESSION["nome"]?> <?=$_SESSION["cognome"]?></span>

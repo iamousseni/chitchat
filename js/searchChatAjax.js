@@ -1,33 +1,15 @@
-var htmlspecialchars = function (string) {
-    return string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-};
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return false;
-}
-
-function createChat(chat) {
+function createChatSearch(chat) {
     let date = new Date(chat['dataOraInvio']);
     let now = new Date();
     let interval = now.getDate() - date.getDate();
+    const month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
     let dataOraInvio = interval > 0 ? date.getDate() + ` ` + month[date.getMonth()] : ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
 
-    const month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
-
+    let lastUserSender = chat['lastUserSender'] == getCookie('u') ? 'Tu: ' : chat['senderNome'] + ': ';
+    
     //if the string consists of more than 40 characters then I show only part of the text
     message = chat['testo'] == null ? "📷 Foto" : chat['testo'];
-    message = htmlspecialchars(message);
+    message = lastUserSender + htmlspecialchars(message);
     message = message.length > 40 ? message.substring(0, 40) + '...' : message;
     let result = `
         <hr>
@@ -39,7 +21,7 @@ function createChat(chat) {
             </div>
             <div>
                 <div>
-                    <strong><span>` + chat['nome'] + ` ` + chat['cognome'] + `</span></strong>
+                    <strong><span>` + chat['nome'] + `</span></strong>
                     <span>` + dataOraInvio + `</span>
                 </div>
                 <div>
@@ -67,7 +49,7 @@ document.getElementById('search').addEventListener('keyup', function () {
                 } else {
                     chats = JSON.parse(this.responseText);
                     for (x = 0; x < chats.length; x++) {
-                        body += createChat(chats[x]);
+                        body += createChatSearch(chats[x]);
                     }
                     document.getElementById('chats').innerHTML = body;
                 }

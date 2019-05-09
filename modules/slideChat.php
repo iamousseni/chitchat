@@ -57,5 +57,5 @@
     echo $result;
 ?>
 </div>
-<script src="js/searchChatAjax.js?u="<?php echo filemtime('js/searchChatAjax.js'); ?>></script>
 <script src="js/slideChatAjax.js?u="<?php echo filemtime('js/slideChatAjax.js'); ?>></script>
+<script src="js/searchChatAjax.js?u="<?php echo filemtime('js/searchChatAjax.js'); ?>></script>

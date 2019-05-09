@@ -509,13 +509,13 @@ footer{
 
 .slide-chat > div:nth-child(2) > div:first-child > strong{
     display: inline-block;
-    width: 84%;
+    width: 65%;
     overflow-x: hidden;
 }
 
 .slide-chat > div:nth-child(2) > div:first-child > span{
     display: inline-block;
-    width: 14%;
+    width: 35%;
     color: #717070;
     font-weight: 600;
     text-align: right;

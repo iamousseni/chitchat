@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div id="chats" class="container-fluid">
+<div id="chats">
 <?php
 
     $API_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";

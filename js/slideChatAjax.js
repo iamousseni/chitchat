@@ -45,7 +45,7 @@ function createChat(chat) {
             </div>
             <div>
                 <div>
-                    <strong><span>` + chat['nome'] + ` ` + chat['cognome'] + `</span></strong>
+                    <strong><span>` + chat['nome'] + `</span></strong>
                     <span>` + dataOraInvio + `</span>
                 </div>
                 <div>

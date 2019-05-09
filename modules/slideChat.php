@@ -4,14 +4,12 @@
         <h1>Chat</h1>
     </div>
     <div>
-        <form method="get">
             <div class="input-group mb-3">
-                <input type="text" name="search" class="form-control" placeholder="Search..." aria-label="Search...">
+                <input type="text" name="search" class="form-control" placeholder="Search..." aria-label="Search..." id="search">
                 <div class="input-group-append">
                     <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
                 </div>
             </div>
-        </form>
     </div>
 </div>
 
@@ -59,5 +57,5 @@
     echo $result;
 ?>
 </div>
-
+<script src="js/searchChatAjax.js?u="<?php echo filemtime('js/searchChatAjax.js'); ?>></script>
 <script src="js/slideChatAjax.js?u="<?php echo filemtime('js/slideChatAjax.js'); ?>></script>

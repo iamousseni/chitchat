@@ -1,6 +1,6 @@
 <?php
     $username = $_COOKIE['u'];
-    $_SESSION['imageProfile'] = isset($_SESSION['imageProfile']) ? $_SESSION['imageProfile'] : 'https://images.unsplash.com/photo-1480535339474-e083439a320d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60';   
+    $_SESSION['imageProfile'] = isset($_SESSION['imageProfile']) ? $_SESSION['imageProfile'] : 'https://images.unsplash.com/photo-1480535339474-e083439a320d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60';
 ?>
 <div class="container-fluid container-chitchat">
     <div class="col-2 user-containerSetting">
@@ -16,27 +16,30 @@
         <div>
             <ul>
                     <li>
-                        <i class="fas fa-home"></i>
-                        <span>Home</span>
+                        <a>
+                          <i class="fas fa-home"></i>Home
+                        </a>
                     </li>
                     <li>
-                        <i class="far fa-comments"></i>
-                        <span>Chat</span>
+                        <a>
+                          <i class="far fa-comments"></i>Chat
+                        </a>
                     </li>
                     <li>
-                        <i class="fas fa-gamepad"></i>
-                        <span>Game</span>
+                        <a>
+                          <i class="fas fa-gamepad"></i>Game
+                        </a>
                     </li>
                     <li>
-                        <i class="fas fa-user-cog"></i>
-                        <span>Settings</span>
+                        <a>
+                          <i class="fas fa-user-cog"></i>Settings
+                        </a>
                     </li>
-                    <a href="elaborator/logout">
-                        <li>
-                            <i class="fas fa-door-open"></i>
-                            <span>Logout</span>
-                        </li>
-                    </a>
+                    <li>
+                        <a href="elaborator/logout">
+                          <i class="fas fa-door-open"></i> Logout
+                        </a>
+                    </li>
             </ul>
         </div>
     </div>

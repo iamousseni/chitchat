@@ -444,7 +444,7 @@ footer{
     font-size: 19px;
 }
 
-.user-containerSetting > div:nth-child(2) > ul li > i{
+.user-containerSetting > div:nth-child(2) > ul > li i{
     font-size: 25px;
     padding-right: 5%;
 }
@@ -527,10 +527,14 @@ footer{
     color: #717070;
 }
 
-
-
-
-
 .date {
     color: #aaa;
+}
+
+a {
+  color: white !important;
+}
+a:hover {
+  color: #8dc28a !important;
+  text-decoration: none !important;
 }

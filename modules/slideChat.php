@@ -41,7 +41,7 @@
             </div>
             <div>
                 <div>
-                    <strong><span>'.$obj->nome.' '.$obj->cognome.'</span></strong>
+                    <strong><span>'.$obj->nome.'</span></strong>
                     <span>'.$dataOraInvio.'</span>
                 </div>
                 <div>
@@ -53,7 +53,6 @@
     }
 
     echo $result;
-    
 ?>
 </div>
 

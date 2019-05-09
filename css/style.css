@@ -86,7 +86,7 @@ html,body{
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
     margin-bottom: 45px;
-    color: #d4d4d4; 
+    color: #d4d4d4;
 }
 
 .btnreg{
@@ -459,19 +459,6 @@ footer{
 
 .container-chitchat > div:nth-child(2) > div:first-child > div:first-child > h1{
     font-weight: bolder;
-}
-
-.container-chitchat > div:nth-child(2) > div:first-child > div:nth-child(2) > form button[type=submit]{
-    border: none;
-    background: transparent;
-    font-size: 25px;
-    color: #abacad;
-}
-
-.container-chitchat > div:nth-child(2) > div:first-child > div:nth-child(2) > form input[type=search]{
-    border: none;
-    border-bottom: 2px solid #abacad;
-    width: 80%;
 }
 
 #message {

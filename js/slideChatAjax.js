@@ -30,7 +30,8 @@ function createChat(chat) {
     if (chat['dataOraInvio'] != localStorage.getItem('chat' + chat['id'])) {
         localStorage.setItem('updates', chat['id']);
         localStorage.setItem('chat' + chat['id'], chat['dataOraInvio']);
-
+        //suono per nuovo messaggio
+        playSound('audio/notification/message.ogg');
         if(!localStorage.getItem('unreadChat'+chat['id'])){
             //inizializzo a zero la "variabile" che conta il numero di messaggi non ancora letti della specifica chat
             localStorage.setItem('unreadChat'+chat['id'], 0);
@@ -116,6 +117,7 @@ setInterval(() => {
                 //detect if there is new message
                 document.getElementById('chats').innerHTML = body;
                 localStorage.removeItem('updates');
+                
             }
 
         }
@@ -131,6 +133,11 @@ if(localStorage.getItem('chatUnread')){
         document.getElementById('chat'+unreaded[x]).children[1].children[1].children[1].style.display = 'inline-block';
         document.getElementById('chat'+unreaded[x]).children[1].children[1].children[1].innerHTML = localStorage.getItem('unreadChat'+unreaded[x]);
     }
+}
+
+function playSound(pathAudio){
+    var audio = new Audio(pathAudio);
+    audio.play();
 }
 
 

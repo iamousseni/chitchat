@@ -35,7 +35,7 @@
 
         $result .= '
         <hr>
-        <div class="slide-chat">
+        <div class="slide-chat" id="chat'.$obj->id.'">
             <div>
                 <div>
                     <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'">
@@ -48,6 +48,7 @@
                 </div>
                 <div>
                     <span>'.$message.'</span>
+                    <span class="notify"></span>
                 </div>
             </div>
         </div>
@@ -57,5 +58,5 @@
     echo $result;
 ?>
 </div>
-<script src="js/slideChatAjax.js?u="<?php echo filemtime('js/slideChatAjax.js'); ?>></script>
-<script src="js/searchChatAjax.js?u="<?php echo filemtime('js/searchChatAjax.js'); ?>></script>
+<script src="js/slideChatAjax.js?u=<?php echo filemtime('js/slideChatAjax.js'); ?>"></script>
+<script src="js/searchChatAjax.js?u=<?php echo filemtime('js/searchChatAjax.js'); ?>"></script>

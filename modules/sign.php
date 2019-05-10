@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-12 left mb-3">
-                        <label class="block" for="username">Username</label>
+                        <label class="block" for="username" name="u" id="u"  >Username</label>
                         <input type="text" name="username" id="username" placeholder="Username..." title="Insert Your Username" required>
                     </div>
                     <div class="col-12 left mb-3">
@@ -112,11 +112,11 @@
     </div>
 </div>
 <script src="js/dateValidator.js"></script>
+<script src="js/usernameAjax.js?get=d"<?php echo filemtime("js/usernameAjax.js"); ?>></script>
 <script>
     //TO DO 06/04/2019
     //check with ajax if username that he wrote allready exist
     //check if password are secure
-    //check data if is set with right format (ex: february has at most 29 days if year are bissextile)
 
     let btnSign = document.getElementById('btn-sign');
     let btnLog = document.getElementById('btn-log');

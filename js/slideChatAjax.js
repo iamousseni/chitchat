@@ -32,35 +32,36 @@ function createChat(chat) {
         localStorage.setItem('chat' + chat['id'], chat['dataOraInvio']);
         //suono per nuovo messaggio
         playSound('audio/notification/message.ogg');
-        if(!localStorage.getItem('unreadChat'+chat['id'])){
-            //inizializzo a zero la "variabile" che conta il numero di messaggi non ancora letti della specifica chat
-            localStorage.setItem('unreadChat'+chat['id'], 0);
 
-            if(!localStorage.getItem('chatUnread')){
-                localStorage.setItem('chatUnread',chat['id']);
-            }else{
-                localStorage.setItem('chatUnread', localStorage.getItem('chatUnread') +'-'+ chat['id']);
+        if (!localStorage.getItem('unreadChat' + chat['id'])) {
+            //inizializzo a zero la "variabile" che conta il numero di messaggi non ancora letti della specifica chat
+            localStorage.setItem('unreadChat' + chat['id'], 0);
+
+            if (!localStorage.getItem('chatUnread')) {
+                localStorage.setItem('chatUnread', chat['id']);
+            } else {
+                localStorage.setItem('chatUnread', localStorage.getItem('chatUnread') + '-' + chat['id']);
             }
         }
         //incremento il la variabile 
-        localStorage.setItem('unreadChat'+chat['id'], parseInt(localStorage.getItem('unreadChat'+chat['id'])) + 1);
+        localStorage.setItem('unreadChat' + chat['id'], parseInt(localStorage.getItem('unreadChat' + chat['id'])) + 1);
     }
 
 
-    document.getElementById('chat'+chat['id']).addEventListener('click', function(){
-        localStorage.removeItem('unreadChat'+chat['id']);
+    document.getElementById('chat' + chat['id']).addEventListener('click', function () {
+        localStorage.removeItem('unreadChat' + chat['id']);
         //ripristino la situazione iniziale della notifica
         this.children[1].children[1].children[1].innerHTML = '';
         this.children[1].children[1].children[1].style.display = 'none';
 
         //rimuovo dal localStorage l'id della chat che è stata appena cliccata
         var unreaded = localStorage.getItem('chatUnread').split('-');
-         unreaded = unreaded.filter(function(ele){
+        unreaded = unreaded.filter(function (ele) {
             return ele != chat['id'];
         });
         localStorage.setItem('chatUnread', unreaded.join('-'));
     });
-  
+
 
     //if the string consists of more than 40 characters then I show only part of the text
     message = chat['testo'] == null ? "📷 Foto" : chat['testo'];
@@ -68,11 +69,11 @@ function createChat(chat) {
     message = message.length > 40 ? message.substring(0, 40) + '...' : message;
 
     //variabile che serve per far vedere il numero di messaggi non ancora letti
-    var unreadStatus = localStorage.getItem('unreadChat'+chat['id']) ? 'style="display: inline-block"' : '';
-    
+    var unreadStatus = localStorage.getItem('unreadChat' + chat['id']) ? 'style="display: inline-block"' : '';
+
     let result = `
         <hr>
-        <div class="slide-chat" id="chat`+chat['id']+`">
+        <div class="slide-chat" id="chat` + chat['id'] + `">
             <div>
                 <div>
                     <img src="` + chat['pathImageProfile'] + `" alt="` + chat['codUtente'] + `">
@@ -85,7 +86,7 @@ function createChat(chat) {
                 </div>
                 <div>
                     <span>` + message + `</span>
-                    <span class="notify" `+ unreadStatus +`>`+localStorage.getItem('unreadChat'+chat['id'])+`</span>
+                    <span class="notify" ` + unreadStatus + `>` + localStorage.getItem('unreadChat' + chat['id']) + `</span>
                 </div>
             </div>
         </div>
@@ -117,7 +118,7 @@ setInterval(() => {
                 //detect if there is new message
                 document.getElementById('chats').innerHTML = body;
                 localStorage.removeItem('updates');
-                
+
             }
 
         }
@@ -127,18 +128,15 @@ setInterval(() => {
 }, 1000);
 
 //perchè così quando refresha la pagina al ritorno rivede le chat in cui non ha ancora letto dei messaggi
-if(localStorage.getItem('chatUnread')){
+if (localStorage.getItem('chatUnread')) {
     var unreaded = localStorage.getItem('chatUnread').split('-');
-    for(x=0; x< unreaded.length; x++){
-        document.getElementById('chat'+unreaded[x]).children[1].children[1].children[1].style.display = 'inline-block';
-        document.getElementById('chat'+unreaded[x]).children[1].children[1].children[1].innerHTML = localStorage.getItem('unreadChat'+unreaded[x]);
+    for (x = 0; x < unreaded.length; x++) {
+        document.getElementById('chat' + unreaded[x]).children[1].children[1].children[1].style.display = 'inline-block';
+        document.getElementById('chat' + unreaded[x]).children[1].children[1].children[1].innerHTML = localStorage.getItem('unreadChat' + unreaded[x]);
     }
 }
 
-function playSound(pathAudio){
+function playSound(pathAudio) {
     var audio = new Audio(pathAudio);
     audio.play();
 }
-
-
-

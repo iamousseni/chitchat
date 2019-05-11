@@ -9,7 +9,10 @@ if($uri == ''){
     }else{
         $uri = 'home'; 
     }
+}else if(!isset($_COOKIE['u']) && explode('/', $uri)[0]!= 'elaborator'){
+        $uri = 'sign'; 
 }
+
 
 if(!file_exists("modules/".$uri.".php")){
     header("HTTP/1.0 404 Not Found");

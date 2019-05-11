@@ -102,10 +102,10 @@
             </div>
             <div class="container-form-btn col-12 left">
                 <div class="col-6 left">
-                    <button id="btn-sign" class="w90 active">Sign Up <i class="arr" style="display:none"></i></button>
+                    <button id="btn-sign" class="w90 active">Sign Up <i class="fas fa-arrow-right arr" style="display:none"></i></i></button>
                 </div>
                 <div class="col-6 left">
-                    <button id="btn-log" class="w100">Sign In <i class="arr"></i></button>
+                    <button id="btn-log" class="w100">Sign In <i class="fas fa-arrow-right arr"></i></button>
                 </div>
             </div>
         </div>

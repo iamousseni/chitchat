@@ -70,12 +70,12 @@ function createChat(chat) {
 
     //variabile che serve per far vedere il numero di messaggi non ancora letti
     var unreadStatus = localStorage.getItem('unreadChat' + chat['id']) ? 'style="display: inline-block"' : '';
-
+    var statusUser = chat['online']=='1' ? 'class="online"' : 'class="offline"';
     let result = `
         <hr>
         <div class="slide-chat" id="chat` + chat['id'] + `">
             <div>
-                <div>
+                <div `+statusUser+`>
                     <img src="` + chat['pathImageProfile'] + `" alt="` + chat['codUtente'] + `">
                 </div>
             </div>
@@ -140,3 +140,20 @@ function playSound(pathAudio) {
     var audio = new Audio(pathAudio);
     audio.play();
 }
+
+//detect when user close tab or browser and then set his status as offline
+window.addEventListener('beforeunload', function(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText != undefined) {
+                let stato = JSON.parse(this.responseText);
+                if(stato == '1'){
+                    console.log('offline');
+                }
+            }
+        }
+    }
+    xhttp.open("GET", "API/userStatusAPI.php?u=" + getCookie('u'), true);
+    xhttp.send();
+});

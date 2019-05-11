@@ -7,6 +7,8 @@ $password = htmlspecialchars(addslashes($_POST['password']));
 $usercheck = $mysqli->query("SELECT * FROM utente WHERE username = '$username' AND password = '$password' AND active = '1';");
 
 if($usercheck->num_rows == 1){
+    //setto l'utente online
+    $mysqli->query("UPDATE utente SET online = 1 WHERE username = '$username';");
     $user = $usercheck->fetch_assoc();
     if(isset($_POST['remember'])){
         // Set deadline (31 days) if remember

@@ -479,10 +479,16 @@ footer{
     position: absolute;
     right: 0;
     top: -8px;
-    /*content: '💧'; offline*/
-    content: '🔥'; /*online*/
     font-size: 20px;
     border-radius: 100%;
+}
+
+.slide-chat > div:first-child > div.online::before{
+    content: '🔥'; /*online*/
+}
+
+.slide-chat > div:first-child > div.offline::before{
+    content: '💧';
 }
 
 .slide-chat > div:first-child > div > img {

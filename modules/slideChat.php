@@ -33,11 +33,12 @@
         $interval = date('d') - date('d', strtotime($obj->dataOraInvio));
         $dataOraInvio = $interval > 0 ? date('d', strtotime($obj->dataOraInvio)).' '.$month[date('n', strtotime($obj->dataOraInvio))] : date('H:i', strtotime($obj->dataOraInvio));
 
+        $statusUser = $obj->online== '1' ? 'class="online"' : 'class="offline"';
         $result .= '
         <hr>
         <div class="slide-chat" id="chat'.$obj->id.'">
             <div>
-                <div>
+                <div '.$statusUser.'>
                     <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'">
                 </div>
             </div>

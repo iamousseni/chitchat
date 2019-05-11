@@ -1,2 +1,6 @@
 # chitchat
-Interactive web chat 
+## ATTENZIONE AGGIORNARE IL LA TABELLA UTENTE DEL DB: 
+
+```
+ALTER TABLE utente ADD online TINYINT(1) NOT NULL DEFAULT '0' AFTER dataOraCreazione;
+```

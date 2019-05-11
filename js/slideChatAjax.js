@@ -143,17 +143,37 @@ function playSound(pathAudio) {
 
 //detect when user close tab or browser and then set his status as offline
 window.addEventListener('beforeunload', function(){
+    let stato = 0;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText != undefined) {
+                let stato = JSON.parse(this.responseText);
+                if(stato == '0'){
+                    console.log('offline');
+                }
+            }
+        }
+    }
+    xhttp.open("GET", "API/userStatusAPI.php?u=" + getCookie('u')+"&status=" + stato, true);
+    xhttp.send();
+});
+
+//detect when user acced on the page
+window.addEventListener('load', function(){
+    let stato = 1;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != undefined) {
                 let stato = JSON.parse(this.responseText);
                 if(stato == '1'){
-                    console.log('offline');
+                    console.log('online');
                 }
             }
         }
     }
-    xhttp.open("GET", "API/userStatusAPI.php?u=" + getCookie('u'), true);
+    xhttp.open("GET", "API/userStatusAPI.php?u=" + getCookie('u')+"&status=" + stato, true);
     xhttp.send();
 });
+

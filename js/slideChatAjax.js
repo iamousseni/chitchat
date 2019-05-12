@@ -21,7 +21,7 @@ function createChat(chat) {
     let date = new Date(chat['dataOraInvio']);
     let now = new Date();
     let interval = now.getDate() - date.getDate();
-    const month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+    const month = {1 : 'Gennaio', 2 : 'Febbraio', 3 : 'Marzo', 4 : 'Aprile', 5 : 'Maggio', 6 : 'Giugno', 7 : 'Luglio', 8 : 'Agosto', 9 : 'Settembre', 10 : 'Ottobre', 11 : 'Novembre', 12 : 'Dicembre'};
     let dataOraInvio = interval > 0 ? date.getDate() + ` ` + month[date.getMonth()] : ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
 
     let lastUserSender = chat['lastUserSender'] == getCookie('u') ? 'Tu: ' : chat['nome'] + ': ';
@@ -30,21 +30,25 @@ function createChat(chat) {
     if (chat['dataOraInvio'] != localStorage.getItem('chat' + chat['id'])) {
         localStorage.setItem('updates', chat['id']);
         localStorage.setItem('chat' + chat['id'], chat['dataOraInvio']);
-        //suono per nuovo messaggio
-        playSound('audio/notification/message.ogg');
 
-        if (!localStorage.getItem('unreadChat' + chat['id'])) {
-            //inizializzo a zero la "variabile" che conta il numero di messaggi non ancora letti della specifica chat
-            localStorage.setItem('unreadChat' + chat['id'], 0);
+        //il nuovo messaggio proviene dall'utente con cui sta chattando
+        if(chat['lastUserSender'] != getCookie('u')){
+            //suono per nuovo messaggio
+            playSound('audio/notification/message.ogg');
 
-            if (!localStorage.getItem('chatUnread')) {
-                localStorage.setItem('chatUnread', chat['id']);
-            } else {
-                localStorage.setItem('chatUnread', localStorage.getItem('chatUnread') + '-' + chat['id']);
+            if (!localStorage.getItem('unreadChat' + chat['id'])) {
+                //inizializzo a zero la "variabile" che conta il numero di messaggi non ancora letti della specifica chat
+                localStorage.setItem('unreadChat' + chat['id'], 0);
+
+                if (!localStorage.getItem('chatUnread')) {
+                    localStorage.setItem('chatUnread', chat['id']);
+                } else {
+                    localStorage.setItem('chatUnread', localStorage.getItem('chatUnread') + '-' + chat['id']);
+                }
             }
+            //incremento il la variabile 
+            localStorage.setItem('unreadChat' + chat['id'], parseInt(localStorage.getItem('unreadChat' + chat['id'])) + 1);
         }
-        //incremento il la variabile 
-        localStorage.setItem('unreadChat' + chat['id'], parseInt(localStorage.getItem('unreadChat' + chat['id'])) + 1);
     }
 
 
@@ -60,6 +64,10 @@ function createChat(chat) {
             return ele != chat['id'];
         });
         localStorage.setItem('chatUnread', unreaded.join('-'));
+
+        //apri la chat specifica
+        console.log('sto aprendo la chat id '+chat['codChat']);
+        openChat(chat['codChat']);
     });
 
 
@@ -127,7 +135,7 @@ setInterval(() => {
     xhttp.send();
 }, 1000);
 
-//perchè così quando refresha la pagina al ritorno rivede le chat in cui non ha ancora letto dei messaggi
+//perchè così quando refresha la pagina al ritorno rivede le chat in cui non ha ancora letto dei messaggi(numero di messaggi non letti)
 if (localStorage.getItem('chatUnread')) {
     var unreaded = localStorage.getItem('chatUnread').split('-');
     for (x = 0; x < unreaded.length; x++) {
@@ -176,4 +184,6 @@ window.addEventListener('load', function(){
     xhttp.open("GET", "API/userStatusAPI.php?u=" + getCookie('u')+"&status=" + stato, true);
     xhttp.send();
 });
+
+
 

@@ -46,7 +46,7 @@
     <div class="col-4">
         <?php @include 'slideChat.php'; ?>
     </div>
-    <div class="col-6">
+    <div class="col-6 container-chat">
         <?php @include 'chat.php'; ?>
     </div>
 </div>

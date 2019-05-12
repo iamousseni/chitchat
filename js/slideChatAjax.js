@@ -82,8 +82,6 @@ function createChat(chat) {
     return result;
 }
 
-//deposito di interval
-var intervalsIds = [];
 setInterval(() => {
     let body = '';
     let chats;

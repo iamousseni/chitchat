@@ -36,7 +36,7 @@
         $statusUser = $obj->online== '1' ? 'class="online"' : 'class="offline"';
         $result .= '
         <hr>
-        <div class="slide-chat" id="chat'.$obj->id.'">
+        <div class="slide-chat" id="chat'.$obj->codChat.'">
             <div>
                 <div '.$statusUser.'>
                     <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'">

@@ -66,6 +66,8 @@ function createChat(chat) {
 
     //lo metto qui l'evento perchè così almeno ogni volta che cambia il dom lui sa sempre dove (chi sono) sono gli elementi che voglio selezionare
     document.getElementById('chat' + chat['codChat']).addEventListener('click', function () {
+        //visualizzo il nome della persona con cui sto chattando
+        document.getElementsByClassName('chat-header')[0].children[0].innerHTML = chat['nome']+' '+chat['cognome'];
         //elimino il setIntervel della chat presistente altrimenti si rischia l'accumulo e poi il sovraccarico
         clearAllChatSetInterval();
 

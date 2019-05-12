@@ -8,6 +8,6 @@
     if($mysqli->connect_error){
         die('Connect error ( ' . $mysqli->connect_errno . ' ) ' . $mysqli->connect_error);
     }else{
-        $mysqli->set_charset('utf8');
+        $mysqli->set_charset('utf8mb4');
     }
     

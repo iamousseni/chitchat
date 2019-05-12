@@ -21,7 +21,20 @@ function createChat(chat) {
     let date = new Date(chat['dataOraInvio']);
     let now = new Date();
     let interval = now.getDate() - date.getDate();
-    const month = {1 : 'Gennaio', 2 : 'Febbraio', 3 : 'Marzo', 4 : 'Aprile', 5 : 'Maggio', 6 : 'Giugno', 7 : 'Luglio', 8 : 'Agosto', 9 : 'Settembre', 10 : 'Ottobre', 11 : 'Novembre', 12 : 'Dicembre'};
+    const month = {
+        1: 'Gennaio',
+        2: 'Febbraio',
+        3: 'Marzo',
+        4: 'Aprile',
+        5: 'Maggio',
+        6: 'Giugno',
+        7: 'Luglio',
+        8: 'Agosto',
+        9: 'Settembre',
+        10: 'Ottobre',
+        11: 'Novembre',
+        12: 'Dicembre'
+    };
     let dataOraInvio = interval > 0 ? date.getDate() + ` ` + month[date.getMonth()] : ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
 
     let lastUserSender = chat['lastUserSender'] == getCookie('u') ? 'Tu: ' : chat['nome'] + ': ';
@@ -32,13 +45,13 @@ function createChat(chat) {
         localStorage.setItem('chat' + chat['id'], chat['dataOraInvio']);
 
         //il nuovo messaggio proviene dall'utente con cui sta chattando
-        if(chat['lastUserSender'] != getCookie('u')){
+        if (chat['lastUserSender'] != getCookie('u')) {
             //suono per nuovo messaggio
             playSound('audio/notification/message.ogg');
 
             if (!localStorage.getItem('unreadChat' + chat['codChat'])) {
                 //inizializzo a zero la "variabile" che conta il numero di messaggi non ancora letti della specifica chat
-                localStorage.setItem('unreadChat' + chat['codChat'], 0);
+                localStorage.setItem('unreadChat' + chat['codChat'], '0');
 
                 if (!localStorage.getItem('chatUnread')) {
                     localStorage.setItem('chatUnread', chat['codChat']);
@@ -51,6 +64,28 @@ function createChat(chat) {
         }
     }
 
+    //lo metto qui l'evento perchè così almeno ogni volta che cambia il dom lui sa sempre dove (chi sono) sono gli elementi che voglio selezionare
+    document.getElementById('chat' + chat['codChat']).addEventListener('click', function () {
+        //elimino il setIntervel della chat presistente altrimenti si rischia l'accumulo e poi il sovraccarico
+        clearAllChatSetInterval();
+
+        localStorage.removeItem('unreadChat' + chat['codChat']);
+        //ripristino la situazione iniziale della notifica
+        this.children[1].children[1].children[1].innerHTML = '';
+        this.children[1].children[1].children[1].style.display = 'none';
+
+        //rimuovo dal localStorage l'id della chat che è stata appena cliccata
+        var unreaded = localStorage.getItem('chatUnread').split('-');
+        unreaded = unreaded.filter(function (ele) {
+            return ele != chat['codChat'];
+        });
+        localStorage.setItem('chatUnread', unreaded.join('-'));
+
+        //apri la chat specifica
+        openChat(chat['codChat']);
+        checkChat(chat['codChat']);
+    });
+
     //if the string consists of more than 40 characters then I show only part of the text
     message = chat['testo'] == null ? "📷 Foto" : chat['testo'];
     message = lastUserSender + htmlspecialchars(message);
@@ -58,12 +93,12 @@ function createChat(chat) {
 
     //variabile che serve per far vedere il numero di messaggi non ancora letti
     var unreadStatus = localStorage.getItem('unreadChat' + chat['codChat']) ? 'style="display: inline-block"' : '';
-    var statusUser = chat['online']=='1' ? 'class="online"' : 'class="offline"';
+    var statusUser = chat['online'] == '1' ? 'class="online"' : 'class="offline"';
     let result = `
         <hr>
         <div class="slide-chat" id="chat` + chat['codChat'] + `">
             <div>
-                <div `+statusUser+`>
+                <div ` + statusUser + `>
                     <img src="` + chat['pathImageProfile'] + `" alt="` + chat['codUtente'] + `">
                 </div>
             </div>
@@ -129,40 +164,37 @@ function playSound(pathAudio) {
 }
 
 //detect when user close tab or browser and then set his status as offline
-window.addEventListener('beforeunload', function(){
+window.addEventListener('beforeunload', function () {
     let stato = 0;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != undefined) {
                 let stato = JSON.parse(this.responseText);
-                if(stato == '0'){
+                if (stato == '0') {
                     console.log('offline');
                 }
             }
         }
     }
-    xhttp.open("GET", "API/userStatusAPI.php?u=" + getCookie('u')+"&status=" + stato, true);
+    xhttp.open("GET", "API/userStatusAPI.php?u=" + getCookie('u') + "&status=" + stato, true);
     xhttp.send();
 });
 
 //detect when user acced on the page
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
     let stato = 1;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != undefined) {
                 let stato = JSON.parse(this.responseText);
-                if(stato == '1'){
+                if (stato == '1') {
                     console.log('online');
                 }
             }
         }
     }
-    xhttp.open("GET", "API/userStatusAPI.php?u=" + getCookie('u')+"&status=" + stato, true);
+    xhttp.open("GET", "API/userStatusAPI.php?u=" + getCookie('u') + "&status=" + stato, true);
     xhttp.send();
 });
-
-
-

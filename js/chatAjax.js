@@ -9,6 +9,7 @@ xhttp.onreadystatechange = function () {
             messages = JSON.parse(this.responseText);
             localStorage.setItem('numMesChat'+idChat, messages.length);
             document.getElementById('display-messages').innerHTML = outputMessages(messages);
+            scrollToBottom(document.getElementById('display-messages'));
         }
     }
 };
@@ -28,6 +29,7 @@ setInterval(() => {
                 if(messages.length != localStorage.getItem('numMesChat'+codeChat)){
                     localStorage.setItem('numMesChat'+codeChat, messages.length);
                     document.getElementById('display-messages').innerHTML = outputMessages(messages);
+                    scrollToBottom(document.getElementById('display-messages'));
                 } 
             }
         }
@@ -91,4 +93,8 @@ for(let x=0; x<slideChat.length; x++){
 
 function clearAllChatSetInterval(){
     window.clearInterval(intervalsIds);
+}
+
+function scrollToBottom(element){
+    element.scrollTo(0, element.scrollHeight);
 }

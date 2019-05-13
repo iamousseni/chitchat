@@ -1,9 +1,8 @@
 <?php
 include 'Admin/include/config.php';
 $idChat = addslashes($_GET['idChat']);
-$message = addslashes($_GET['m']);
+$message = urldecode(addslashes($_GET['m']));
 $username = addslashes($_COOKIE['u']);
-
 if($message != ''){
     $messageQuery = $mysqli->query("INSERT INTO messaggio (codUtente, codChat, testo) VALUES ('$username', '$idChat', '$message');");
 

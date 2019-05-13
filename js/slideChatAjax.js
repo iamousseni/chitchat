@@ -94,8 +94,8 @@ function createChat(chat) {
     });
 
     //if the string consists of more than 40 characters then I show only part of the text
-    message = chat['testo'] == null ? "📷 Foto" : chat['testo'];
-    message = lastUserSender + htmlspecialchars(message);
+    message = chat['testo'] == null ? "📷 Foto" : htmlspecialchars(chat['testo']);
+    message = lastUserSender + message;
     message = message.length > 40 ? message.substring(0, 40) + '...' : message;
 
     //variabile che serve per far vedere il numero di messaggi non ancora letti

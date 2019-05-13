@@ -28,7 +28,7 @@
         //if the string consists of more than 30 characters then I show only part of the text
         $message = $obj->testo == null ? "📷 Foto" : $obj->testo;
         $lastUserSender = $obj->lastUserSender == $_COOKIE['u'] ? 'Tu: ' : $obj->nome.': ';
-        $message = $lastUserSender.$message;
+        $message = $lastUserSender.htmlspecialchars($message);
         $message = strlen($message) > 40 ? substr(htmlspecialchars($message), 0, 40).'...' : $message;
 
         $interval = date('d') - date('d', strtotime($obj->dataOraInvio));

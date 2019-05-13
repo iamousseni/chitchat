@@ -5,7 +5,7 @@ function openChat(idChat) {
     localStorage.setItem('chatOpen', idChat);
     var messages;
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+    xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != undefined) {
                 messages = JSON.parse(this.responseText);
@@ -24,7 +24,7 @@ function checkChat(codeChat) {
         setInterval(() => {
             var messages;
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+            xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     if (this.responseText != undefined) {
                         messages = JSON.parse(this.responseText);
@@ -44,7 +44,7 @@ function checkChat(codeChat) {
 function outputMessages(messages) {
     var outMessage = '';
     for (let x = 0; x < messages.length; x++) {
-        var message = messages[x].testo == null ? '<div class="image-container"><img src="' + messages[x].pathFile + '"></div>' : '<div><span>' + messages[x]['testo'] + '</span></div>';
+        var message = messages[x].testo == null ? '<img src="' + messages[x].pathFile + '" class="image">' : '<span>' + messages[x]['testo'] + '</span>';
 
         //messaggio proveniente dall'utente loggato?
         if (messages[x].codUtente != getCookie('u')) {

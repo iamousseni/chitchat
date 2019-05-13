@@ -624,8 +624,13 @@ a:hover {
 #input > span{
     font-size: 17px;
     font-weight: bold;
-    color: #9e9e9e;
+    color: #000;
     outline: none;
+}
+
+#input > span[contenteditable=true]:empty:before{
+    content: attr(placeholder); 
+    color: #9e9e9e;
 }
 
 .container-message > div:nth-child(3){
@@ -662,8 +667,11 @@ a:hover {
     align-items: center;
     width: 100%;
     clear: both;
-    margin-top: 3%;
     margin-bottom: 3%;
+}
+
+#display-messages > div.chitchat-messages:first-child{
+    margin-top: 3%;
 }
 
 .chitchat-messages.left > div:first-child {

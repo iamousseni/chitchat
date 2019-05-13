@@ -2,6 +2,7 @@
 var intervalsIds = [];
 
 function openChat(idChat) {
+    localStorage.setItem('chatOpen', idChat);
     var messages;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {

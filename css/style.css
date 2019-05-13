@@ -470,9 +470,16 @@ footer {
     color: lightgreen;
 }
 
+#chats > hr {
+    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
+}
+
 .slide-chat {
     display: flex;
     cursor: pointer;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 
 .slide-chat>div:first-child>div {

@@ -23,7 +23,6 @@ document.getElementById('input').children[0].addEventListener('keypress', functi
     var content = htmlspecialchars(this.value);
     var idChat = localStorage.getItem('chatOpen');
     if(e.keyCode === 13){
-        console.log(content);
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {

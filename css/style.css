@@ -472,6 +472,7 @@ footer {
 
 .slide-chat {
     display: flex;
+    cursor: pointer;
 }
 
 .slide-chat>div:first-child>div {

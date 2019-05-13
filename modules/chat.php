@@ -1,6 +1,6 @@
 <?php include 'Admin/include/config.php'; ?>
 <div class="chat-header">
-    <span></span>
+    <span>No chat selected</span>
 </div>
 <div id="display-messages">
 </div>
@@ -34,8 +34,8 @@ document.getElementById('input').children[0].addEventListener('keypress', functi
             }
         };
         xhttp.open("GET", "elaborator/sendMessage&idChat="+idChat+"&m="+content, true);
-        xhttp.send(); 
-    }       
+        xhttp.send();
+    }
 });
 
 

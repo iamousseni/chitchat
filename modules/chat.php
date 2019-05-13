@@ -10,7 +10,7 @@
         <button id="emoji"><span>😌</span></button>
     </div>
     <div id="input">
-        <textarea placeholder="Type a message..."></textarea>
+        <span contenteditable="true" placeholder="Type a message..."></span>
     </div>
     <div>
         <button class="attach"><i class="fas fa-paperclip"></i></button>

@@ -43,7 +43,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-4 p-0">
         <?php @include 'slideChat.php'; ?>
     </div>
     <div class="col-6 container-chat">

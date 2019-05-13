@@ -482,8 +482,7 @@ footer {
 .slide-chat {
     display: flex;
     cursor: pointer;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
+    padding: 1rem;
 }
 
 .slide-chat>div:first-child>div {
@@ -588,7 +587,6 @@ a:hover {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    padding-left: 8%;
 }
 
 .carousel-control-prev,

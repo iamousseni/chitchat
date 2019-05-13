@@ -7,6 +7,7 @@
     for($chats = []; $row = $slideChat->fetch_assoc();){
         $chats[] = $row;
     }
+ //buio un del bambino ha comprendere quando ma paura possiamo 
 
     header('Content-Type: application/json');
     echo json_encode($chats);

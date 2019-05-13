@@ -565,3 +565,6 @@ a:hover {
     margin-left: auto;
     padding-left: 8%;
 }
+.carousel-control-prev, .carousel-control-next-icon {
+    fill: #000; 
+}

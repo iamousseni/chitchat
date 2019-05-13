@@ -12,7 +12,8 @@
             </div>
     </div>
 </div>
-
+<div id="ciao">
+</div>
 <div id="chats">
 <?php
 
@@ -38,7 +39,7 @@
         <div class="slide-chat" id="chat'.$obj->id.'">
             <div>
                 <div>
-                    <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'">
+                    <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'" onclick="return Gallery()" data-toggle="modal" data-target=".bd-example-modal-lg">
                 </div>
             </div>
             <div>
@@ -54,9 +55,10 @@
         </div>
     ';
     }
-
     echo $result;
 ?>
 </div>
 <script src="js/slideChatAjax.js?u=<?php echo filemtime('js/slideChatAjax.js'); ?>"></script>
 <script src="js/searchChatAjax.js?u=<?php echo filemtime('js/searchChatAjax.js'); ?>"></script>
+<script src="js/Gallery.js?u=f<?php echo filemtime('js/Gallery.js'); ?>"></script>
+

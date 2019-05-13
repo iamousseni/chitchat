@@ -21,7 +21,7 @@
     $json = file_get_contents($API_link.'/API/slideChatAPI.php?u='.$_COOKIE["u"].'&limit=10');
     $objs = json_decode($json);
 
-    $month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+    $month = [1 => 'Gennaio', 2 => 'Febbraio', 3 => 'Marzo', 4 => 'Aprile', 5 => 'Maggio', 6 => 'Giugno', 7 => 'Luglio', 8 => 'Agosto', 9 => 'Settembre', 10 => 'Ottobre', 11 => 'Novembre', 12 => 'Dicembre'];
 
     $result = '';
     foreach($objs as $obj){
@@ -34,12 +34,18 @@
         $interval = date('d') - date('d', strtotime($obj->dataOraInvio));
         $dataOraInvio = $interval > 0 ? date('d', strtotime($obj->dataOraInvio)).' '.$month[date('n', strtotime($obj->dataOraInvio))] : date('H:i', strtotime($obj->dataOraInvio));
 
+        $statusUser = $obj->online== '1' ? 'class="online"' : 'class="offline"';
         $result .= '
         <hr>
-        <div class="slide-chat" id="chat'.$obj->id.'">
+        <div class="slide-chat" id="chat'.$obj->codChat.'">
             <div>
+<<<<<<< HEAD
                 <div>
                     <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'" onclick="return Gallery()" data-toggle="modal" data-target=".bd-example-modal-lg">
+=======
+                <div '.$statusUser.'>
+                    <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'">
+>>>>>>> c582c739e9dbe21dd0bfb2c2f0abcfdb0025fde6
                 </div>
             </div>
             <div>

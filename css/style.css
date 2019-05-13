@@ -479,10 +479,16 @@ footer{
     position: absolute;
     right: 0;
     top: -8px;
-    /*content: '💧'; offline*/
-    content: '🔥'; /*online*/
     font-size: 20px;
     border-radius: 100%;
+}
+
+.slide-chat > div:first-child > div.online::before{
+    content: '🔥'; /*online*/
+}
+
+.slide-chat > div:first-child > div.offline::before{
+    content: '💧';
 }
 
 .slide-chat > div:first-child > div > img {
@@ -565,6 +571,164 @@ a:hover {
     margin-left: auto;
     padding-left: 8%;
 }
+<<<<<<< HEAD
 .carousel-control-prev, .carousel-control-next-icon {
     fill: #000; 
 }
+=======
+
+
+/* chat.php*/
+.container-chat{
+    height: 100vh;
+}
+
+.chat-header{
+    height: 15%;
+    display: flex;
+    align-items: flex-end;
+    padding-top: 7%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #ced4da;
+}
+
+.chat-header > span{
+    font-size: 20px;
+}
+
+#display-messages{
+    height: 75%;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.container-message{
+    display: flex;
+    align-items: center;
+    background: #fcfafa;
+    height: 10%;
+}
+
+.container-message > div:first-child > button#emoji{
+    outline: none;
+    background: none;
+    border: none;
+}
+
+.container-message > div:first-child > button#emoji > span{
+    font-size: 32px;
+    color: #9e9e9e;
+    cursor: pointer;
+}
+
+#input{
+    width: 80%;
+    padding-left: 2%;
+}
+
+#input > span{
+    font-size: 17px;
+    font-weight: bold;
+    color: #000;
+    outline: none;
+}
+
+#input > span[contenteditable=true]:empty:before{
+    content: attr(placeholder); 
+    color: #9e9e9e;
+}
+
+.container-message > div:nth-child(3){
+    width: 20%;
+    text-align: right;
+}
+
+.container-message > div:nth-child(3) > button.attach{
+    background: none;
+    border:none;
+    outline: none;
+}
+
+.container-message > div:nth-child(3) > button.attach > i{
+    font-size: 22px;
+    color: #9e9e9e;
+}
+
+.container-message > div:nth-child(3) > button[type=submit]{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: #509f2e;
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    box-shadow: 1px 3px 5px #509f2e;
+    margin: 0 10%;
+    outline: none;
+}
+
+.chitchat-messages{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    clear: both;
+    margin-bottom: 3%;
+}
+
+#display-messages > div.chitchat-messages:first-child{
+    margin-top: 3%;
+}
+
+.chitchat-messages.left > div:first-child {
+    width: 60px;
+    height: 60px;
+}
+
+.chitchat-messages.right > div:first-child {
+    width: 95%;
+}
+
+.chitchat-messages.right > div:first-child > span{
+    float: right;
+    border-radius: 50px;
+    background: #509f2e;
+    margin-left: 3%;
+    padding: 1% 5%;
+    display: inline-block;
+    color: #fff;
+}
+
+.chitchat-messages.left > div:first-child > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.chitchat-messages.right > div:first-child{
+    width: 95%;
+}
+
+.chitchat-messages.right > div:first-child > img{
+    width: 100%;
+}
+
+.chitchat-messages > div:nth-child(2){
+    width: 90%;
+}
+
+.chitchat-messages.left > div:nth-child(2) > span{
+    border-radius: 50px;
+    background: #f0f0f0;
+    margin-left: 3%;
+    padding: 1% 5%;
+    display: inline-block;
+}
+
+.chitchat-messages > div:nth-child(2) > img{
+    width: 100%;
+}
+
+
+
+>>>>>>> c582c739e9dbe21dd0bfb2c2f0abcfdb0025fde6

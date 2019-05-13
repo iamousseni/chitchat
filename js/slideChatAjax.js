@@ -59,7 +59,7 @@ function createChat(chat) {
                     localStorage.setItem('chatUnread', localStorage.getItem('chatUnread') + '-' + chat['codChat']);
                 }
             }
-            //incremento il la variabile 
+            //incremento il la variabile
             localStorage.setItem('unreadChat' + chat['codChat'], parseInt(localStorage.getItem('unreadChat' + chat['codChat'])) + 1);
         }
     }
@@ -85,6 +85,11 @@ function createChat(chat) {
 
         //apri la chat specifica
         openChat(chat['codChat']);
+        chats = document.getElementsByClassName('slide-chat');
+        for (let chat of chats) {
+            chat.classList.remove('active');
+        }
+        this.classList.add('active');
         checkChat(chat['codChat']);
     });
 

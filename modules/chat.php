@@ -10,7 +10,7 @@
         <button id="emoji"><span>😌</span></button>
     </div>
     <div id="input">
-        <span contenteditable="true" placeholder="Type a message..."></span>
+        <textarea placeholder="Type a message..."></textarea>
     </div>
     <div>
         <button class="attach"><i class="fas fa-paperclip"></i></button>
@@ -20,7 +20,7 @@
 <script src="js/chatAjax.js"></script>
 <script>
 document.getElementById('input').children[0].addEventListener('keypress', function(e){
-    var content = this.innerHTML;
+    var content = this.value;
     var idChat = localStorage.getItem('chatOpen');
     if(e.keyCode === 13){
         var xhttp = new XMLHttpRequest();

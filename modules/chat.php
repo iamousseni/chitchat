@@ -1,6 +1,6 @@
 <?php include 'Admin/include/config.php'; ?>
 <div class="chat-header">
-    <span></span>
+    <span>No chat selected</span>
 </div>
 <div id="display-messages">
 </div>
@@ -10,7 +10,7 @@
         <button id="emoji"><span>😌</span></button>
     </div>
     <div id="input">
-        <span contenteditable="true" placeholder="Type a message..."></span>
+        <textarea placeholder="Type a message..."></textarea>
     </div>
     <div>
         <button class="attach"><i class="fas fa-paperclip"></i></button>
@@ -18,6 +18,7 @@
     </div>
 </div>
 <script src="js/chatAjax.js"></script>
+<<<<<<< HEAD
 <script>
 document.getElementById('input').children[0].addEventListener('keypress', function(e){
     var content = this.innerHTML;
@@ -43,3 +44,6 @@ document.getElementById('input').children[0].addEventListener('keypress', functi
 
 </script>
 <script src="js/Gallery.js"></script>
+=======
+<script src="js/sendMessage.js"></script>
+>>>>>>> acfd32a978a74e3a6a1722eb09dd2da4fcb87784

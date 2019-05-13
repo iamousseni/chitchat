@@ -39,13 +39,8 @@
         <hr>
         <div class="slide-chat" id="chat'.$obj->codChat.'">
             <div>
-<<<<<<< HEAD
-                <div>
-                    <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'" onclick="return Gallery()" data-toggle="modal" data-target=".bd-example-modal-lg">
-=======
                 <div '.$statusUser.'>
                     <img src="'.$obj->pathImageProfile.'" alt="'.$obj->codUtente.'">
->>>>>>> c582c739e9dbe21dd0bfb2c2f0abcfdb0025fde6
                 </div>
             </div>
             <div>

@@ -1,4 +1,4 @@
-var htmlspecialchars = function (string) {
+var htmlspecialchars = function(string) {
     return string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 };
 
@@ -65,9 +65,9 @@ function createChat(chat) {
     }
 
     //lo metto qui l'evento perchè così almeno ogni volta che cambia il dom lui sa sempre dove (chi sono) sono gli elementi che voglio selezionare
-    document.getElementById('chat' + chat['codChat']).addEventListener('click', function () {
+    document.getElementById('chat' + chat['codChat']).addEventListener('click', function() {
         //visualizzo il nome della persona con cui sto chattando
-        document.getElementsByClassName('chat-header')[0].children[0].innerHTML = chat['nome']+' '+chat['cognome'];
+        document.getElementsByClassName('chat-header')[0].children[0].innerHTML = chat['nome'] + ' ' + chat['cognome'];
         //elimino il setIntervel della chat presistente altrimenti si rischia l'accumulo e poi il sovraccarico
         clearAllChatSetInterval();
 
@@ -78,7 +78,7 @@ function createChat(chat) {
 
         //rimuovo dal localStorage l'id della chat che è stata appena cliccata
         var unreaded = localStorage.getItem('chatUnread').split('-');
-        unreaded = unreaded.filter(function (ele) {
+        unreaded = unreaded.filter(function(ele) {
             return ele != chat['codChat'];
         });
         localStorage.setItem('chatUnread', unreaded.join('-'));
@@ -123,11 +123,10 @@ setInterval(() => {
     let body = '';
     let chats;
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+    xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != undefined) {
                 chats = JSON.parse(this.responseText);
-
                 for (x = 0; x < chats.length; x++) {
                     body += createChat(chats[x]);
                 }
@@ -166,10 +165,10 @@ function playSound(pathAudio) {
 }
 
 //detect when user close tab or browser and then set his status as offline
-window.addEventListener('beforeunload', function () {
+window.addEventListener('beforeunload', function() {
     let stato = 0;
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+    xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != undefined) {
                 let stato = JSON.parse(this.responseText);
@@ -184,10 +183,10 @@ window.addEventListener('beforeunload', function () {
 });
 
 //detect when user acced on the page
-window.addEventListener('load', function () {
+window.addEventListener('load', function() {
     let stato = 1;
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+    xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != undefined) {
                 let stato = JSON.parse(this.responseText);

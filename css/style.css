@@ -1,77 +1,78 @@
-html,body{
+html,
+body {
     width: 100%;
     height: 100%;
     float: left;
     font-family: 'Roboto', sans-serif;
 }
 
-.left{
+.left {
     float: left;
 }
 
-.right{
+.right {
     float: right;
 }
 
-.block{
+.block {
     display: block;
 }
 
-.inline-block{
+.inline-block {
     display: inline-block;
 }
 
-.inline{
+.inline {
     display: inline;
 }
 
-.w100{
+.w100 {
     width: 100%;
 }
 
-.h100{
+.h100 {
     height: 100%;
 }
 
-.w90{
+.w90 {
     width: 90%;
 }
 
-.w80{
+.w80 {
     width: 80%;
 }
 
-.w33{
+.w33 {
     width: 33%;
 }
 
-.w32{
+.w32 {
     width: 32%;
 }
 
-.mb-3{
+.mb-3 {
     margin-bottom: 3%;
 }
 
-.sign-up > form > div:first-child > div{
+.sign-up>form>div:first-child>div {
     padding: 0;
 }
 
-.body-container{
+.body-container {
     display: flex;
     align-items: center;
     height: 100%;
 }
 
-.bk-cc{
+.bk-cc {
     background: #090909;
 }
 
-.cc > img{
-    width:60%;
+.cc>img {
+    width: 60%;
 }
 
-.motto > h1{
+.motto>h1 {
     font-size: 2.5em;
     line-height: 1.3;
     font-weight: 300;
@@ -80,7 +81,7 @@ html,body{
     color: #43962f;
 }
 
-.motto > h2{
+.motto>h2 {
     font-size: 18px;
     line-height: 21px;
     font-weight: 300;
@@ -89,7 +90,7 @@ html,body{
     color: #d4d4d4;
 }
 
-.btnreg{
+.btnreg {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
@@ -107,11 +108,11 @@ html,body{
     outline: none!important;
 }
 
-.container-form-btn > div{
+.container-form-btn>div {
     padding: 0;
 }
 
-.container-form-btn > div button{
+.container-form-btn>div button {
     border-radius: 50px;
     border: none;
     padding: 13px;
@@ -121,25 +122,25 @@ html,body{
     outline: none;
 }
 
-.container-form-btn > div button.active{
+.container-form-btn>div button.active {
     background: linear-gradient(to right, #045e32, #92cc25);
 }
 
-.frm-sign{
+.frm-sign {
     background: #141414;
     padding: 50px 40px;
     border-radius: 5px;
     margin-bottom: 2%;
 }
 
-.frm-sign div h1{
+.frm-sign div h1 {
     padding-right: 15px;
     padding-left: 15px;
     margin-bottom: 5%;
     color: #43962f;
 }
 
-.frm-sign div label{
+.frm-sign div label {
     font-family: 'Roboto', sans-serif;
     font-size: 19px;
     color: #d4d4d4;
@@ -148,7 +149,7 @@ html,body{
     font-weight: bolder;
 }
 
-.frm-sign div input:not([type=checkbox]){
+.frm-sign div input:not([type=checkbox]) {
     display: block;
     width: 100%;
     height: 25px;
@@ -164,29 +165,29 @@ html,body{
     font-weight: 500;
 }
 
-.sign-up > form > div:first-child > div:first-child input{
-    width:90%;
+.sign-up>form>div:first-child>div:first-child input {
+    width: 90%;
 }
 
-.arr::before{
+.arr::before {
     content: '⟶';
 }
 
-.verEmail{
+.verEmail {
     color: #fff;
     padding-bottom: 7%;
 }
 
-.txt-center{
+.txt-center {
     text-align: center;
 }
 
-.verContent{
+.verContent {
     position: relative;
     margin-top: -80px;
 }
 
-.verEmail > img{
+.verEmail>img {
     width: 660px;
     height: 470px;
     position: relative;
@@ -194,13 +195,13 @@ html,body{
     margin-left: -318px;
 }
 
-.verContent h1{
+.verContent h1 {
     text-align: center;
     font-weight: 300;
     margin-bottom: 2%;
 }
 
-.verContent h2{
+.verContent h2 {
     text-align: center;
     font-size: 25px;
     width: 70%;
@@ -209,13 +210,13 @@ html,body{
     font-weight: 400;
 }
 
-.imgProfile{
+.imgProfile {
     width: 100%;
     text-align: center;
     margin-bottom: 5%;
 }
 
-.imgProfile > img{
+.imgProfile>img {
     border-radius: 100%;
     height: 250px;
     width: 250px;
@@ -223,18 +224,19 @@ html,body{
     background: linear-gradient(to right, #045e32, #92cc25);
 }
 
-.completeProfile{
+.completeProfile {
     height: 100%;
     display: flex;
     align-items: center;
 }
 
-.container-edit{
+.container-edit {
     text-align: center;
     margin-bottom: 2%;
 }
 
-.container-edit form input[type=submit], .container-edit form input[type=file]{
+.container-edit form input[type=submit],
+.container-edit form input[type=file] {
     outline: none;
     border-radius: 5px;
     border: none;
@@ -244,17 +246,17 @@ html,body{
     font-weight: 600;
 }
 
-.container-edit-info p{
+.container-edit-info p {
     color: #fff;
 }
 
-.container-bio h1{
+.container-bio h1 {
     color: #fff;
     font-weight: 300;
     margin-bottom: 5%;
 }
 
-.container-bio form textarea{
+.container-bio form textarea {
     width: 80%;
     display: block;
     height: 256px;
@@ -265,7 +267,7 @@ html,body{
     margin-bottom: 3%;
 }
 
-.container-bio form input[type=submit]{
+.container-bio form input[type=submit] {
     width: 80%;
     border-radius: 5px;
     height: 40px;
@@ -275,30 +277,30 @@ html,body{
     font-weight: 600;
 }
 
-.container-userProfile{
+.container-userProfile {
     padding: 0;
     height: 100%;
 }
 
-.container-userProfile > div:first-child{
+.container-userProfile>div:first-child {
     padding: 0;
     height: 40%;
 }
 
-.cover-profile{
+.cover-profile {
     background: url(http://localhost/Git_Repositories/Fitnet/profile/cover-fly.jpg);
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.imageProfile{
+.imageProfile {
     width: 170px;
     height: 100%;
     position: relative;
 }
 
-.imageProfile > img{
+.imageProfile>img {
     width: 170px;
     height: 170px;
     object-fit: cover;
@@ -308,54 +310,56 @@ html,body{
     left: 15%;
 }
 
-.personInfo{
+.personInfo {
     float: left;
     padding-bottom: 3%;
 }
 
-.personInfo > div:first-child{
+.personInfo>div:first-child {
     padding: 2% 0;
 }
 
-.personInfo > div:nth-child(2) > div{
+.personInfo>div:nth-child(2)>div {
     padding: 5px;
     border-bottom: 2px solid #c6c6c6;
 }
 
-.personInfo > div:nth-child(2) > div > div{
+.personInfo>div:nth-child(2)>div>div {
     padding: 8px 0;
 }
 
-.personInfo > div:nth-child(2) > div > div:first-child{
+.personInfo>div:nth-child(2)>div>div:first-child {
     font-weight: 501;
     color: #787777;
 }
 
+
 /* forgot page */
-.containerForgot{
-    display:flex;
+
+.containerForgot {
+    display: flex;
     align-items: center;
     height: 100%;
 }
 
-.containerForgot > div:nth-child(2) > div:first-child{
+.containerForgot>div:nth-child(2)>div:first-child {
     color: #fff;
 }
 
-.containerForgot > div:nth-child(2) > div:first-child > h1{
+.containerForgot>div:nth-child(2)>div:first-child>h1 {
     font-size: 80px;
     line-height: 80px;
     margin-bottom: 2%;
     color: #fff;
 }
 
-.containerForgot > div:nth-child(2) > div:first-child > h2{
+.containerForgot>div:nth-child(2)>div:first-child>h2 {
     font-size: 30px;
     line-height: 30px;
     color: #fff;
 }
 
-.containerForgot > div:nth-child(2) > div:nth-child(2) > form > input:not([type=submit]){
+.containerForgot>div:nth-child(2)>div:nth-child(2)>form>input:not([type=submit]) {
     display: block;
     width: 40%;
     height: 25px;
@@ -372,8 +376,8 @@ html,body{
     margin: 15px 0;
 }
 
-.containerForgot > div:nth-child(2) > div:nth-child(2) > form > input[type=submit]{
-    width:40%;
+.containerForgot>div:nth-child(2)>div:nth-child(2)>form>input[type=submit] {
+    width: 40%;
     border-radius: 50px;
     border: none;
     padding: 13px;
@@ -384,43 +388,44 @@ html,body{
     background: linear-gradient(to right, #045e32, #92cc25);
 }
 
-footer{
+footer {
     background: #090909;
     color: #898f9c;
-    text-align:center;
+    text-align: center;
 }
 
 
 /* home.php */
-.container-chitchat{
+
+.container-chitchat {
     display: flex;
     align-items: flex-start;
     padding: 0!important;
     height: 100%;
 }
 
-.user-containerSetting{
+.user-containerSetting {
     background: #090909;
     /*filter: blur(3px);
     -webkit-filter: blur(3px);*/
-    width:100%;
+    width: 100%;
     height: 100%;
     color: #fff;
 }
 
-.user-containerSetting > div:first-child{
+.user-containerSetting>div:first-child {
     width: 100%;
     margin: 20% auto;
 }
 
-.user-containerSetting > div:first-child > div:first-child{
+.user-containerSetting>div:first-child>div:first-child {
     width: 130px;
     height: 130px;
     text-align: center;
     margin: 5% auto;
 }
 
-.user-containerSetting > div:first-child > div:first-child > img{
+.user-containerSetting>div:first-child>div:first-child>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -428,36 +433,36 @@ footer{
     border: 2px solid #509f2e;
 }
 
-.user-containerSetting > div:first-child > div:nth-child(2){
+.user-containerSetting>div:first-child>div:nth-child(2) {
     color: #fff;
     text-align: center;
     font-size: 19px;
 }
 
-.user-containerSetting > div:nth-child(2) > ul{
+.user-containerSetting>div:nth-child(2)>ul {
     list-style: none;
     padding: 0;
 }
 
-.user-containerSetting > div:nth-child(2) > ul li{
+.user-containerSetting>div:nth-child(2)>ul li {
     padding: 18px 10px;
     font-size: 19px;
 }
 
-.user-containerSetting > div:nth-child(2) > ul > li i{
+.user-containerSetting>div:nth-child(2)>ul>li i {
     font-size: 25px;
     padding-right: 5%;
 }
 
-.container-chitchat > div:nth-child(2) > div:first-child{
+.container-chitchat>div:nth-child(2)>div:first-child {
     padding: 8%;
 }
 
-.container-chitchat > div:nth-child(2) > div:first-child > div:first-child{
+.container-chitchat>div:nth-child(2)>div:first-child>div:first-child {
     margin-bottom: 5%;
 }
 
-.container-chitchat > div:nth-child(2) > div:first-child > div:first-child > h1{
+.container-chitchat>div:nth-child(2)>div:first-child>div:first-child>h1 {
     font-weight: bolder;
 }
 
@@ -465,17 +470,17 @@ footer{
     color: lightgreen;
 }
 
-.slide-chat{
+.slide-chat {
     display: flex;
 }
 
-.slide-chat > div:first-child > div {
+.slide-chat>div:first-child>div {
     position: relative;
     width: 70px;
     height: 70px;
 }
 
-.slide-chat > div:first-child > div::before{
+.slide-chat>div:first-child>div::before {
     position: absolute;
     right: 0;
     top: -8px;
@@ -483,22 +488,23 @@ footer{
     border-radius: 100%;
 }
 
-.slide-chat > div:first-child > div.online::before{
-    content: '🔥'; /*online*/
+.slide-chat>div:first-child>div.online::before {
+    content: '🔥';
+    /*online*/
 }
 
-.slide-chat > div:first-child > div.offline::before{
+.slide-chat>div:first-child>div.offline::before {
     content: '💧';
 }
 
-.slide-chat > div:first-child > div > img {
+.slide-chat>div:first-child>div>img {
     width: 100%;
     height: 100%;
     border-radius: 100%;
     object-fit: cover;
 }
 
-.slide-chat > div:nth-child(2){
+.slide-chat>div:nth-child(2) {
     width: 95%;
     margin-left: 5%;
     display: flex;
@@ -506,20 +512,20 @@ footer{
     flex-direction: column;
 }
 
-.slide-chat > div:nth-child(2) > div:first-child{
+.slide-chat>div:nth-child(2)>div:first-child {
     display: flex;
     align-items: flex-start;
     width: 100%;
     height: 50%;
 }
 
-.slide-chat > div:nth-child(2) > div:first-child > strong{
+.slide-chat>div:nth-child(2)>div:first-child>strong {
     display: inline-block;
     width: 65%;
     overflow-x: hidden;
 }
 
-.slide-chat > div:nth-child(2) > div:first-child > span{
+.slide-chat>div:nth-child(2)>div:first-child>span {
     display: inline-block;
     width: 35%;
     color: #717070;
@@ -527,7 +533,7 @@ footer{
     text-align: right;
 }
 
-.slide-chat > div:nth-child(2) > div:nth-child(2){
+.slide-chat>div:nth-child(2)>div:nth-child(2) {
     display: flex;
     align-items: flex-start;
     width: 100%;
@@ -535,14 +541,14 @@ footer{
     overflow-x: hidden;
 }
 
-.slide-chat > div:nth-child(2) > div:nth-child(2) > span{
+.slide-chat>div:nth-child(2)>div:nth-child(2)>span {
     display: block;
     color: #717070;
     white-space: nowrap;
     width: 95%;
 }
 
-.slide-chat > div:nth-child(2) > div:nth-child(2) > span.notify{
+.slide-chat>div:nth-child(2)>div:nth-child(2)>span.notify {
     display: none;
     width: 21px;
     height: 21px;
@@ -558,32 +564,34 @@ footer{
 }
 
 a {
-  color: white !important;
-}
-a:hover {
-  color: #8dc28a !important;
-  text-decoration: none !important;
+    color: white !important;
 }
 
-#chats{
+a:hover {
+    color: #8dc28a !important;
+    text-decoration: none !important;
+}
+
+#chats {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
     padding-left: 8%;
 }
-<<<<<<< HEAD
-.carousel-control-prev, .carousel-control-next-icon {
-    fill: #000; 
+
+.carousel-control-prev,
+.carousel-control-next-icon {
+    fill: #000;
 }
-=======
 
 
 /* chat.php*/
-.container-chat{
+
+.container-chat {
     height: 100vh;
 }
 
-.chat-header{
+.chat-header {
     height: 15%;
     display: flex;
     align-items: flex-end;
@@ -592,69 +600,69 @@ a:hover {
     border-bottom: 1px solid #ced4da;
 }
 
-.chat-header > span{
+.chat-header>span {
     font-size: 20px;
 }
 
-#display-messages{
+#display-messages {
     height: 75%;
     overflow-x: hidden;
     overflow-y: visible;
 }
 
-.container-message{
+.container-message {
     display: flex;
     align-items: center;
     background: #fcfafa;
     height: 10%;
 }
 
-.container-message > div:first-child > button#emoji{
+.container-message>div:first-child>button#emoji {
     outline: none;
     background: none;
     border: none;
 }
 
-.container-message > div:first-child > button#emoji > span{
+.container-message>div:first-child>button#emoji>span {
     font-size: 32px;
     color: #9e9e9e;
     cursor: pointer;
 }
 
-#input{
+#input {
     width: 80%;
     padding-left: 2%;
 }
 
-#input > span{
+#input>span {
     font-size: 17px;
     font-weight: bold;
     color: #000;
     outline: none;
 }
 
-#input > span[contenteditable=true]:empty:before{
-    content: attr(placeholder); 
+#input>span[contenteditable=true]:empty:before {
+    content: attr(placeholder);
     color: #9e9e9e;
 }
 
-.container-message > div:nth-child(3){
+.container-message>div:nth-child(3) {
     width: 20%;
     text-align: right;
 }
 
-.container-message > div:nth-child(3) > button.attach{
+.container-message>div:nth-child(3)>button.attach {
     background: none;
-    border:none;
+    border: none;
     outline: none;
 }
 
-.container-message > div:nth-child(3) > button.attach > i{
+.container-message>div:nth-child(3)>button.attach>i {
     font-size: 22px;
     color: #9e9e9e;
 }
 
-.container-message > div:nth-child(3) > button[type=submit]{
+.container-message>div:nth-child(3)>button[type=submit] {
     width: 40px;
     height: 40px;
     border-radius: 100%;
@@ -667,7 +675,7 @@ a:hover {
     outline: none;
 }
 
-.chitchat-messages{
+.chitchat-messages {
     display: flex;
     align-items: center;
     width: 100%;
@@ -675,20 +683,20 @@ a:hover {
     margin-bottom: 3%;
 }
 
-#display-messages > div.chitchat-messages:first-child{
+#display-messages>div.chitchat-messages:first-child {
     margin-top: 3%;
 }
 
-.chitchat-messages.left > div:first-child {
+.chitchat-messages.left>div:first-child {
     width: 60px;
     height: 60px;
 }
 
-.chitchat-messages.right > div:first-child {
+.chitchat-messages.right>div:first-child {
     width: 95%;
 }
 
-.chitchat-messages.right > div:first-child > span{
+.chitchat-messages.right>div:first-child>span {
     float: right;
     border-radius: 50px;
     background: #509f2e;
@@ -698,26 +706,26 @@ a:hover {
     color: #fff;
 }
 
-.chitchat-messages.left > div:first-child > img{
+.chitchat-messages.left>div:first-child>img {
     width: 100%;
     height: 100%;
     border-radius: 100%;
     object-fit: cover;
 }
 
-.chitchat-messages.right > div:first-child{
+.chitchat-messages.right>div:first-child {
     width: 95%;
 }
 
-.chitchat-messages.right > div:first-child > img{
+.chitchat-messages.right>div:first-child>img {
     width: 100%;
 }
 
-.chitchat-messages > div:nth-child(2){
+.chitchat-messages>div:nth-child(2) {
     width: 90%;
 }
 
-.chitchat-messages.left > div:nth-child(2) > span{
+.chitchat-messages.left>div:nth-child(2)>span {
     border-radius: 50px;
     background: #f0f0f0;
     margin-left: 3%;
@@ -725,10 +733,6 @@ a:hover {
     display: inline-block;
 }
 
-.chitchat-messages > div:nth-child(2) > img{
+.chitchat-messages>div:nth-child(2)>img {
     width: 100%;
 }
-
-
-
->>>>>>> c582c739e9dbe21dd0bfb2c2f0abcfdb0025fde6

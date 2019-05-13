@@ -42,3 +42,4 @@ document.getElementById('input').children[0].addEventListener('keypress', functi
 
 
 </script>
+<script src="js/Gallery.js"></script>

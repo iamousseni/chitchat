@@ -6,7 +6,7 @@
         <div class="container-edit">
             <?php echo $_SESSION['message']; ?>
             <form action="elaborator/completeProfileElaborator" method="post" enctype="multipart/form-data">
-                <input type="file" name="imgProfile" accept="image/gif, image/jpg, image/jpe, image/jpeg, image/png">
+                <input type="file" name="imgProfile" accept="image/gif, image/jpg, image/jpe, image/jpeg, image/png" required>
                 <input type="submit" name="edit" id="edit" style="display:none">
             </form>
         </div>

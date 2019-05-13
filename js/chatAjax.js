@@ -44,7 +44,7 @@ function checkChat(codeChat) {
 function outputMessages(messages) {
     var outMessage = '';
     for (let x = 0; x < messages.length; x++) {
-        var message = messages[x].testo == null ? '<div><img src="' + messages[x].pathFile + '" class="image"></div>' : '<div><span>' + htmlspecialchars(messages[x]['testo']) + '</span></div>';
+        var message = messages[x].testo == null ? '<div><img src="' + messages[x].pathFile + '" class="image" onclick="viewImage(this)"></div>' : '<div><span>' + htmlspecialchars(messages[x]['testo']) + '</span></div>';
 
         //messaggio proveniente dall'utente loggato?
         if (messages[x].codUtente != getCookie('u')) {
@@ -54,7 +54,7 @@ function outputMessages(messages) {
                 <img src="` + messages[x].pathImageProfile + `" alt="` + messages[x].codUtente + `">
             </div>`;
         } else {
-            outMessage += `<div class="right chitchat-messages" >`;
+            outMessage += `<div class="rightopenImage chitchat-messages" >`;
         }
 
         outMessage += `

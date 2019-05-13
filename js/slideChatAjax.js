@@ -137,7 +137,6 @@ setInterval(() => {
                 }
             }
 
-
             //detect if there is a new chat
             if (chats[chats.length - 1]['id'] != localStorage.getItem('lastChat')) {
                 document.getElementById('chats').innerHTML = body;

@@ -19,3 +19,4 @@
 </div>
 <script src="js/chatAjax.js"></script>
 <script src="js/sendMessage.js"></script>
+<script src="js/viewImage.js"></script>

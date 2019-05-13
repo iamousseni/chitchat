@@ -1,7 +1,6 @@
 document.getElementById('input').children[0].addEventListener('keypress', function(e){
     var content = htmlspecialchars(encodeURIComponent(this.innerHTML));
     var idChat = localStorage.getItem('chatOpen');
-    console.log('before: '+content);
     if(e.keyCode === 13){
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {

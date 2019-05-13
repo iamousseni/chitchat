@@ -61,5 +61,4 @@
 </div>
 <script src="js/slideChatAjax.js?u=<?php echo filemtime('js/slideChatAjax.js'); ?>"></script>
 <script src="js/searchChatAjax.js?u=<?php echo filemtime('js/searchChatAjax.js'); ?>"></script>
-<script src="js/Gallery.js?u=f<?php echo filemtime('js/Gallery.js'); ?>"></script>
 

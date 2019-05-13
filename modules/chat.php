@@ -1,6 +1,6 @@
 <?php include 'Admin/include/config.php'; ?>
 <div class="chat-header">
-    <span></span>
+    <span>No chat selected</span>
 </div>
 <div id="display-messages">
 </div>
@@ -22,7 +22,7 @@
 document.getElementById('input').children[0].addEventListener('keypress', function(e){
     var content = htmlspecialchars(this.innerHTML);
     var idChat = localStorage.getItem('chatOpen');
-    if(e.keyCode === 13 && content!="&lt;br&gt;"){
+    if(e.keyCode === 13){
         console.log(content);
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {

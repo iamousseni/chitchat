@@ -54,7 +54,7 @@ function outputMessages(messages) {
                 <img src="` + messages[x].pathImageProfile + `" alt="` + messages[x].codUtente + `">
             </div>`;
         } else {
-            outMessage += `<div class="rightopenImage chitchat-messages" >`;
+            outMessage += `<div class="right chitchat-messages" >`;
         }
 
         outMessage += `
@@ -71,5 +71,6 @@ function clearAllChatSetInterval() {
 }
 
 function scrollToBottom(element) {
+    console.log(element.scrollHeight);
     element.scrollTo(0, element.scrollHeight);
 }

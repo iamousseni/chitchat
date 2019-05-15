@@ -43,7 +43,7 @@ function createChat(chat) {
     if (chat['dataOraInvio'] != localStorage.getItem('chat' + chat['id'])) {
         localStorage.setItem('updates', chat['id']);
         localStorage.setItem('chat' + chat['id'], chat['dataOraInvio']);
-
+        
         //il nuovo messaggio proviene dall'utente con cui sta chattando
         if (chat['lastUserSender'] != getCookie('u')) {
             //suono per nuovo messaggio
@@ -64,34 +64,37 @@ function createChat(chat) {
         }
     }
 
-    //lo metto qui l'evento perchè così almeno ogni volta che cambia il dom lui sa sempre dove (chi sono) sono gli elementi che voglio selezionare
-    document.getElementById('chat' + chat['codChat']).addEventListener('click', function() {
-        //visualizzo il nome della persona con cui sto chattando
-        document.getElementsByClassName('chat-header')[0].children[0].innerHTML = chat['nome'] + ' ' + chat['cognome'];
-        //elimino il setIntervel della chat presistente altrimenti si rischia l'accumulo e poi il sovraccarico
-        clearAllChatSetInterval();
+    //controllo se esistono chat    
+    if(document.getElementById('chats').childElementCount > 0){
+        //lo metto qui l'evento perchè così almeno ogni volta che cambia il dom lui sa sempre dove (chi sono) sono gli elementi che voglio selezionare
+        document.getElementById('chat' + chat['codChat']).addEventListener('click', function() {
+            //visualizzo il nome della persona con cui sto chattando
+            document.getElementsByClassName('chat-header')[0].children[0].innerHTML = chat['nome'] + ' ' + chat['cognome'];
+            //elimino il setIntervel della chat presistente altrimenti si rischia l'accumulo e poi il sovraccarico
+            clearAllChatSetInterval();
 
-        localStorage.removeItem('unreadChat' + chat['codChat']);
-        //ripristino la situazione iniziale della notifica
-        this.children[1].children[1].children[1].innerHTML = '';
-        this.children[1].children[1].children[1].style.display = 'none';
+            localStorage.removeItem('unreadChat' + chat['codChat']);
+            //ripristino la situazione iniziale della notifica
+            this.children[1].children[1].children[1].innerHTML = '';
+            this.children[1].children[1].children[1].style.display = 'none';
 
-        //rimuovo dal localStorage l'id della chat che è stata appena cliccata
-        var unreaded = localStorage.getItem('chatUnread').split('-');
-        unreaded = unreaded.filter(function(ele) {
-            return ele != chat['codChat'];
+            //rimuovo dal localStorage l'id della chat che è stata appena cliccata
+            var unreaded = localStorage.getItem('chatUnread').split('-');
+            unreaded = unreaded.filter(function(ele) {
+                return ele != chat['codChat'];
+            });
+            localStorage.setItem('chatUnread', unreaded.join('-'));
+
+            //apri la chat specifica
+            openChat(chat['codChat']);
+            chats = document.getElementsByClassName('slide-chat');
+            for (let chat of chats) {
+                chat.classList.remove('active');
+            }
+            this.classList.add('active');
+            checkChat(chat['codChat']);
         });
-        localStorage.setItem('chatUnread', unreaded.join('-'));
-
-        //apri la chat specifica
-        openChat(chat['codChat']);
-        chats = document.getElementsByClassName('slide-chat');
-        for (let chat of chats) {
-            chat.classList.remove('active');
-        }
-        this.classList.add('active');
-        checkChat(chat['codChat']);
-    });
+    }
 
     //if the string consists of more than 40 characters then I show only part of the text
     message = chat['testo'] == null ? "📷 Foto" : htmlspecialchars(chat['testo']);
@@ -132,22 +135,22 @@ setInterval(() => {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != undefined) {
                 chats = JSON.parse(this.responseText);
-                for (x = 0; x < chats.length; x++) {
-                    body += createChat(chats[x]);
+                if(chats.length > 0){
+                    for (x = 0; x < chats.length; x++) {
+                        body += createChat(chats[x]);
+                    }
+                
+                    //detect if there is a new chat
+                    if (chats[chats.length - 1]['id'] != localStorage.getItem('lastChat')) {
+                        document.getElementById('chats').innerHTML = body;
+                        localStorage.setItem('lastChat', chats[chats.length - 1]['id']);
+                    } else if (localStorage.getItem('updates')) {
+                        //detect if there is new message
+                        document.getElementById('chats').innerHTML = body;
+                        localStorage.removeItem('updates');
+                    }
                 }
             }
-
-            //detect if there is a new chat
-            if (chats[chats.length - 1]['id'] != localStorage.getItem('lastChat')) {
-                document.getElementById('chats').innerHTML = body;
-                localStorage.setItem('lastChat', chats[chats.length - 1]['id']);
-            } else if (localStorage.getItem('updates')) {
-                //detect if there is new message
-                document.getElementById('chats').innerHTML = body;
-                localStorage.removeItem('updates');
-
-            }
-
         }
     };
     xhttp.open("GET", "API/slideChatAPI.php?u=" + getCookie('u') + '&limit=10', true);

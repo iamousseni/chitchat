@@ -644,16 +644,12 @@ a:hover {
     padding-left: 2%;
 }
 
-#input>span {
+#input>input[type=text] {
     font-size: 17px;
     font-weight: bold;
     color: #000;
     outline: none;
-}
-
-#input>span[contenteditable=true]:empty:before {
-    content: attr(placeholder);
-    color: #9e9e9e;
+    border: none;
 }
 
 .container-message>div:nth-child(3) {

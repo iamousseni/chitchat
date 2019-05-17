@@ -2,7 +2,11 @@
 var intervalsIds = [];
 
 function openChat(idChat) {
+    //visualizzo il nome della persona con cui sto chattando
+    document.getElementsByClassName('chat-header')[0].children[0].innerHTML = sessionStorage.getItem('fullnameChatOpen');
+
     sessionStorage.setItem('chatOpen', idChat);
+    document.getElementById('idChat').value = sessionStorage.getItem('chatOpen');
     var messages;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -73,3 +77,7 @@ function clearAllChatSetInterval() {
 function scrollToBottom(element) {
     element.scrollTo(0, element.scrollHeight);
 }
+
+window.addEventListener('load', function () {
+    openChat(sessionStorage.getItem('chatOpen'));
+});

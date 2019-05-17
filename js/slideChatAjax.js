@@ -118,8 +118,8 @@ function updateEventChats() {
     for (let x = 0; x < chat.length; x++) {
 
         document.getElementById('chat' + chat[x]['codChat']).addEventListener('click', function () {
-            //visualizzo il nome della persona con cui sto chattando
-            document.getElementsByClassName('chat-header')[0].children[0].innerHTML = chat[x]['nome'] + ' ' + chat[x]['cognome'];
+            //memorizzo il nome della persona della chat aperta
+            sessionStorage.setItem('fullnameChatOpen', chat[x]['nome'] + ' ' + chat[x]['cognome']);
             //elimino il setIntervel della chat presistente altrimenti si rischia l'accumulo e poi il sovraccarico
             clearAllChatSetInterval();
 
@@ -201,7 +201,6 @@ setInterval(() => {
                 chats = JSON.parse(this.responseText);
                 if (!Object.is(sessionStorage.getItem('chats'), JSON.stringify(chats))) {
                     sessionStorage.setItem('chats', JSON.stringify(chats));
-                    console.log('qualcosa di nuovo');
                     for (x = 0; x < chats.length; x++) {
                         body += createChat(chats[x]);
                     }

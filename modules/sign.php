@@ -115,7 +115,6 @@
 <script src="js/usernameAjax.js?get=d"<?php echo filemtime("js/usernameAjax.js"); ?>></script>
 <script>
     //TO DO 06/04/2019
-    //check with ajax if username that he wrote allready exist
     //check if password are secure
 
     let btnSign = document.getElementById('btn-sign');
@@ -170,7 +169,4 @@
             console.log('error')
        }
     }
-
-    
-
 </script>

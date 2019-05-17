@@ -13,19 +13,15 @@ if (isset($_POST['edit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     header('location: ../completeProfile');
 }
-
 if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $userImageProfile = $_SESSION['userProfileImage'];
     $bio = addslashes($_POST['bio']);
     $username = $_COOKIE['u'];
-
     $resultStatus = $mysqli->query("UPDATE utente SET pathImageProfile = '$userImageProfile', bio = '$bio' WHERE username = '$username';");
-
     if ($mysqli->affected_rows == 0) {
         $_SESSION['message'] = 'Errore, non è stato possibile aggiornare l\'immagine di profilo o la bio dell\'utente specificato';
     } else {
         header('location: ../home');
     }
 }
-
 ?>

@@ -657,16 +657,22 @@ a:hover {
     text-align: right;
 }
 
-.container-message>div:nth-child(3)>button.attach {
+.container-message>div:nth-child(3)>button#attach {
     background: none;
     border: none;
     outline: none;
 }
 
-.container-message>div:nth-child(3)>button.attach>i {
+.container-message>div:nth-child(3)>form, .container-message>div:nth-child(3)>form > input{
+    visibility: hidden;
+    display: none;
+}
+
+.container-message>div:nth-child(3)>button#attach>i {
     font-size: 22px;
     color: #9e9e9e;
 }
+
 
 .container-message>div:nth-child(3)>button[type=submit] {
     width: 40px;

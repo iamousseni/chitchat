@@ -1,7 +1,7 @@
 var input = document.getElementById('input').children[0];
 input.addEventListener('keypress', function(e){
     var content = htmlspecialchars(encodeURIComponent(this.value));
-    var idChat = localStorage.getItem('chatOpen');
+    var idChat = sessionStorage.getItem('chatOpen');
     if(e.keyCode === 13){
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {

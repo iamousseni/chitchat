@@ -2,14 +2,14 @@
 var intervalsIds = [];
 
 function openChat(idChat) {
-    localStorage.setItem('chatOpen', idChat);
+    sessionStorage.setItem('chatOpen', idChat);
     var messages;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != undefined) {
                 messages = JSON.parse(this.responseText);
-                localStorage.setItem('numMesChat' + idChat, messages.length);
+                sessionStorage.setItem('numMesChat' + idChat, messages.length);
                 document.getElementById('display-messages').innerHTML = outputMessages(messages);
                 scrollToBottom(document.getElementById('display-messages'));
             }
@@ -28,8 +28,8 @@ function checkChat(codeChat) {
                 if (this.readyState == 4 && this.status == 200) {
                     if (this.responseText != undefined) {
                         messages = JSON.parse(this.responseText);
-                        if (messages.length != localStorage.getItem('numMesChat' + codeChat)) {
-                            localStorage.setItem('numMesChat' + codeChat, messages.length);
+                        if (messages.length != sessionStorage.getItem('numMesChat' + codeChat)) {
+                            sessionStorage.setItem('numMesChat' + codeChat, messages.length);
                             document.getElementById('display-messages').innerHTML = outputMessages(messages);
                             scrollToBottom(document.getElementById('display-messages'));
                         }

@@ -22,40 +22,20 @@ function createChat(chat) {
     return writeHTMLChat(chat);
 }
 
-setInterval(() => {
-    let body = '';
-    let chats;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            if (this.responseText != undefined) {
-                chats = JSON.parse(this.responseText);
-                if (
-                    chats.length > 0 &&
-                    !Object.is(sessionStorage.getItem('chats'), JSON.stringify(chats))
-                ) {
-                    sessionStorage.setItem('chats', JSON.stringify(chats));
+function countMessageNotReaded(chat){
+    if (!sessionStorage.getItem('unreadChat' + chat['codChat'])) {
+        //inizializzo a zero la "variabile" che conta il numero di messaggi non ancora letti della specifica chat
+        sessionStorage.setItem('unreadChat' + chat['codChat'], 0);
+        console.log('setto a zero');
+    }
+    console.log('incrementa');
+    //incremento il la variabile
+    sessionStorage.setItem('unreadChat' + chat['codChat'], parseInt(sessionStorage.getItem('unreadChat' + chat['codChat'])) + 1);
 
-                    for (x = 0; x < chats.length; x++) {
-                        body += createChat(chats[x]);
-                    }
-
-                    document.getElementById('chats').innerHTML = body;
-                    updateEventChats();
-                }
-            }
-        }
-    };
-    xhttp.open("GET", "API/slideChatAPI.php?u=" + getCookie('u') + '&limit=10', true);
-    xhttp.send();
-}, 1000);
-
-//perchè così quando refresha la pagina al ritorno rivede le chat in cui non ha ancora letto dei messaggi(numero di messaggi non letti)
-if (sessionStorage.getItem('chatUnread')) {
-    var unreaded = sessionStorage.getItem('chatUnread').split('-');
-    for (x = 0; x < unreaded.length; x++) {
-        document.getElementById('chat' + unreaded[x]).children[1].children[1].children[1].style.display = 'inline-block';
-        document.getElementById('chat' + unreaded[x]).children[1].children[1].children[1].innerHTML = sessionStorage.getItem('unreadChat' + unreaded[x]);
+    if (!sessionStorage.getItem('chatUnread')) {
+        sessionStorage.setItem('chatUnread', chat['codChat']);
+    } else {
+        sessionStorage.setItem('chatUnread', sessionStorage.getItem('chatUnread') + '-' + chat['codChat']);
     }
 }
 
@@ -68,19 +48,10 @@ function isArrivedNewMessage(chat) {
         if (chat['lastUserSender'] != getCookie('u')) {
             //suono per nuovo messaggio
             playSound('audio/notification/message.ogg');
-
-            if (!sessionStorage.getItem('unreadChat' + chat['codChat'])) {
-                //inizializzo a zero la "variabile" che conta il numero di messaggi non ancora letti della specifica chat
-                sessionStorage.setItem('unreadChat' + chat['codChat'], '0');
+            if(sessionStorage.getItem('chatOpen') != chat['codChat']){
+                countMessageNotReaded(chat);
             }
-            //incremento il la variabile
-            sessionStorage.setItem('unreadChat' + chat['codChat'], parseInt(localStorage.getItem('unreadChat' + chat['codChat'])) + 1);
-
-            if (!sessionStorage.getItem('chatUnread')) {
-                sessionStorage.setItem('chatUnread', chat['codChat']);
-            } else {
-                sessionStorage.setItem('chatUnread', sessionStorage.getItem('chatUnread') + '-' + chat['codChat']);
-            }
+            
         }
     }
 }
@@ -114,8 +85,10 @@ function writeHTMLChat(chat) {
     message = message.length > 40 ? message.substring(0, 40) + '...' : message;
 
     //variabile che serve per far vedere il numero di messaggi non ancora letti
-    var unreadStatus = localStorage.getItem('unreadChat' + chat['codChat']) ? 'style="display: inline-block"' : '';
+    var unreadStatus = sessionStorage.getItem('unreadChat' + chat['codChat']) ? 'style="display: inline-block"' : '';
     var statusUser = chat['online'] == '1' ? 'class="online"' : 'class="offline"';
+
+
     let result = `
         <hr>
         <div class="slide-chat" id="chat` + chat['codChat'] + `">
@@ -131,7 +104,7 @@ function writeHTMLChat(chat) {
                 </div>
                 <div>
                     <span>` + message + `</span>
-                    <span class="notify" ` + unreadStatus + `>` + localStorage.getItem('unreadChat' + chat['codChat']) + `</span>
+                    <span class="notify" ` + unreadStatus + `>` + sessionStorage.getItem('unreadChat' + chat['codChat']) + `</span>
                 </div>
             </div>
         </div>
@@ -216,3 +189,38 @@ window.addEventListener('load', function () {
     xhttp.send();
     updateEventChats();
 });
+
+
+setInterval(() => {
+    let body = '';
+    let chats;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText != undefined) {
+                chats = JSON.parse(this.responseText);
+                if (!Object.is(sessionStorage.getItem('chats'), JSON.stringify(chats))) {
+                    sessionStorage.setItem('chats', JSON.stringify(chats));
+                    console.log('qualcosa di nuovo');
+                    for (x = 0; x < chats.length; x++) {
+                        body += createChat(chats[x]);
+                    }
+                    document.getElementById('chats').innerHTML = body;
+                    updateEventChats();
+                }
+            }
+        }
+    };
+    xhttp.open("GET", "API/slideChatAPI.php?u=" + getCookie('u') + '&limit=10', true);
+    xhttp.send();
+}, 1000);
+
+    //perchè così quando refresha la pagina al ritorno rivede le chat in cui non ha ancora letto dei messaggi(numero di messaggi non letti)
+    if (sessionStorage.getItem('chatUnread') && sessionStorage.getItem('chatUnread') != '') {
+        var unreaded = sessionStorage.getItem('chatUnread').split('-');
+        for (x = 0; x < unreaded.length; x++) {
+            document.getElementById('chat' + unreaded[x]).children[1].children[1].children[1].style.display = 'inline-block';
+            document.getElementById('chat' + unreaded[x]).children[1].children[1].children[1].innerHTML = sessionStorage.getItem('unreadChat' + unreaded[x]);
+        }
+    }
+

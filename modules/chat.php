@@ -22,6 +22,6 @@
         <button type="submit" id="send"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
-<script src="js/chatAjax.js"></script>
-<script src="js/sendMessage.js"></script>
-<script src="js/viewImage.js"></script>
+<script src="js/chatAjax.js?c=<?php echo filemtime("js/chatAjax.js"); ?>"></script>
+<script src="js/sendMessage.js?c=<?php echo filemtime("js/sendMessage.js"); ?>"></script>
+<script src="js/viewImage.js?c=<?php echo filemtime("js/viewImage.js"); ?>"></script>

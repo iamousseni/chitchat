@@ -26,9 +26,7 @@ function countMessageNotReaded(chat){
     if (!sessionStorage.getItem('unreadChat' + chat['codChat'])) {
         //inizializzo a zero la "variabile" che conta il numero di messaggi non ancora letti della specifica chat
         sessionStorage.setItem('unreadChat' + chat['codChat'], 0);
-        console.log('setto a zero');
     }
-    console.log('incrementa');
     //incremento il la variabile
     sessionStorage.setItem('unreadChat' + chat['codChat'], parseInt(sessionStorage.getItem('unreadChat' + chat['codChat'])) + 1);
 

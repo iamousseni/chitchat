@@ -71,6 +71,5 @@ function clearAllChatSetInterval() {
 }
 
 function scrollToBottom(element) {
-    console.log(element.scrollHeight);
     element.scrollTo(0, element.scrollHeight);
 }

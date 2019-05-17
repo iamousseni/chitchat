@@ -1,7 +1,7 @@
 /*
     DEABRA RIFAI OPPURE SPIEGAMI PERCHÈ NON CAPISCO
 */
-
+/*
 function viewImage(element) {
     document.getElementById('ciao').innerHTML =  `
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -19,4 +19,4 @@ function viewImage(element) {
         </div>
     </div>
 </div>`;
-}
+}*/

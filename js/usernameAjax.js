@@ -5,8 +5,6 @@ function usernameValidator(validation) {
             let usernameAble = JSON.parse(this.responseText);
             if(usernameAble.length == 0){
                 //libero 
-                console.log(usernameAble[0]);
-               // class="w80"
                 document.getElementById('username').style.borderBottom = '2px solid green';
             }else{
                 //occupato
@@ -15,7 +13,7 @@ function usernameValidator(validation) {
 
         }
     };
-    xhttp.open("GET", "API/UsernameAPI.php?u="+validation+'&limit=10', true);
+    xhttp.open("GET", "API/usernameAPI.php?u="+validation+'&limit=10', true);
     xhttp.send();
   }
 

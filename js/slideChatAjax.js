@@ -126,12 +126,14 @@ function updateEventChats() {
             this.children[1].children[1].children[1].innerHTML = '';
             this.children[1].children[1].children[1].style.display = 'none';
 
-            //rimuovo dal sessionStorage l'id della chat che è stata appena cliccata
-            var unreaded = sessionStorage.getItem('chatUnread').split('-');
-            unreaded = unreaded.filter(function (ele) {
-                return ele != chat[x]['codChat'];
-            });
-            sessionStorage.setItem('chatUnread', unreaded.join('-'));
+            if(sessionStorage.getItem('chatUnread')){
+                //rimuovo dal sessionStorage l'id della chat che è stata appena cliccata
+                var unreaded = sessionStorage.getItem('chatUnread').split('-');
+                unreaded = unreaded.filter(function (ele) {
+                    return ele != chat[x]['codChat'];
+                });
+                sessionStorage.setItem('chatUnread', unreaded.join('-'));
+            }
 
             //apri la chat specifica
             openChat(chat[x]['codChat']);

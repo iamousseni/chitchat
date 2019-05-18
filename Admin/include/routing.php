@@ -9,7 +9,11 @@ if($uri == ''){
     }else{
         $uri = 'home'; 
     }
-}else if(!isset($_COOKIE['u']) && explode('/', $uri)[0]!= 'elaborator'){
+}else if(
+    !isset($_COOKIE['u']) 
+    && explode('/', $uri)[0]!= 'elaborator' 
+    && $uri != 'forgot'){
+        
         $uri = 'sign'; 
 }
 

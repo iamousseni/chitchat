@@ -778,15 +778,7 @@ textarea {
 
 
 
-.test-emoji{
-    position: absolute;
-    text-align:center;
-    font-size: 2rem;
-    left: 0%;
-    width: 100%;
-    top: 20%;
-  }
-  
+
   .intercom-composer-popover-input{
       font-size-adjust: none;
       font-size: 100%;
@@ -997,6 +989,7 @@ textarea {
   .intercom-composer-popover {
       z-index: 2147483003;
       position: absolute;
+      left: 0;
       bottom: 50px;
       box-shadow: 0 1px 15px 1px rgba(0,0,0,.08);
       background-color: #fff;
@@ -1012,7 +1005,7 @@ textarea {
   .intercom-composer-popover.active{
     visibility: visible;
     opacity:1;
-    left: 0;
+    bottom: 70px;
   }
   .intercom-emoji-picker {
       width: 330px;
@@ -1096,3 +1089,13 @@ textarea {
       left:20px;
   }
   
+  .chat-input-tool{
+    background-color: #32A8E6;
+    padding: 10px;
+    border:none;  
+    border-radius: 5px;
+    position: absolute;
+    bottom:20px;
+    left: 50%;
+    outline:none;
+  }

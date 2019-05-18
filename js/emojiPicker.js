@@ -23,5 +23,3 @@ for(let x=0; x < emoji.length; x++){
         messageField.setSelectionRange(messageField.value.substring(0, (beforeCaret + this.innerHTML ).length).length, messageField.value.substring(0, (beforeCaret + this.innerHTML ).length).length);
     });
 }
-
-

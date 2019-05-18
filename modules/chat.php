@@ -1,4 +1,3 @@
-<?php include 'Admin/include/config.php'; ?>
 <div class="chat-header">
     <span>No chat selected</span>
 </div>

@@ -211,7 +211,7 @@ setInterval(() => {
     };
     xhttp.open("GET", "API/slideChatAPI.php?u=" + getCookie('u') + '&limit=10', true);
     xhttp.send();
-}, 1000);
+}, 500);
 
 //perchè così quando refresha la pagina al ritorno rivede le chat in cui non ha ancora letto dei messaggi(numero di messaggi non letti)
 if (sessionStorage.getItem('chatUnread') && sessionStorage.getItem('chatUnread') != '') {

@@ -42,7 +42,7 @@ function checkChat(codeChat) {
             };
             xhttp.open("GET", "API/messagesAPI.php?idChat=" + codeChat, true);
             xhttp.send();
-        }, 1000);
+        }, 500);
 }
 
 function outputMessages(messages) {

@@ -79,5 +79,5 @@ function scrollToBottom(element) {
 }
 
 window.addEventListener('load', function () {
-    openChat(sessionStorage.getItem('chatOpen'));
+    simulateClick('chat'+sessionStorage.getItem('chatOpen'));
 });

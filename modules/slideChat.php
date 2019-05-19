@@ -12,8 +12,6 @@
             </div>
     </div>
 </div>
-<div id="ciao">
-</div>
 <div id="chats">
 <?php
 

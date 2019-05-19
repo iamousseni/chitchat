@@ -15,31 +15,31 @@
 
         <div>
             <ul>
-                    <li>
-                        <a>
-                          <i class="fas fa-home"></i>Home
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                          <i class="far fa-comments"></i>Chat
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                          <i class="fas fa-gamepad"></i>Game
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                          <i class="fas fa-user-cog"></i>Settings
-                        </a>
-                    </li>
-                    <li>
-                        <a href="elaborator/logout">
-                          <i class="fas fa-door-open"></i> Logout
-                        </a>
-                    </li>
+                <li>
+                    <a>
+                        <i class="fas fa-home"></i>Home
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="far fa-comments"></i>Chat
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fas fa-gamepad"></i>Game
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fas fa-user-cog"></i>Settings
+                    </a>
+                </li>
+                <li>
+                    <a href="elaborator/logout">
+                        <i class="fas fa-door-open"></i> Logout
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

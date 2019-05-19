@@ -6,6 +6,11 @@
     </div>
     <div class="col-6">
         <div>
+            <?php 
+                echo isset($_SESSION['success']) ? '<span style="color:green">'.@$_SESSION['success'].'</span>' : '<span style="color:red">'.@$_SESSION['error'].'</span>';  unset($_SESSION['success']);
+                 unset($_SESSION['error']);   
+            ?>
+
             <h1>Forgot <br> Password?</h1>
             <h2>Enter the username associated with your account.</h2>
         </div>

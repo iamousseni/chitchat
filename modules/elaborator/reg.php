@@ -12,7 +12,7 @@
     $result = $mysqli->query("SELECT usename FROM utente WHERE username = '$username';");
     //allready exist
     if($result !== false){
-        $_SESSION['message'] = 'User with that username already exist';
+        $_SESSION['error'] = 'User with that username already exist';
         header('location: :/');
     }
 
@@ -44,12 +44,12 @@
             if($invia){
                header('location: ../verifyEmail&e='.urlencode($email));
             }else{
-               $_SESSION['message'] = 'Errore! Email non è stato inviato correttamente, riprovare più tardi';
+               $_SESSION['error'] = 'Errore! Email non è stato inviato correttamente, riprovare più tardi';
                header('location: ../');
             }
         }
     }else{
-        $_SESSION['message'] = 'Errore! Registrazione utente, riprovare più tardi';
+        $_SESSION['error'] = 'Errore! Registrazione utente, riprovare più tardi';
         header('location: ../');
     }
 

@@ -22,11 +22,11 @@ if($result->num_rows == 1){
     $messageToSend = "Your Credentials of access are: <br> <strong>Username: </strong> $username <br> <strong>Password: </strong> ".$userCredential['password'];
     $invia = mail($userCredential['email'],$oggetto,$messageToSend,$intestazione,'-reset-password@chitchat.com');
     if($invia){
-        $_SESSION['message'] = 'E-mail inviata con successo all\' account collegato';
+        $_SESSION['success'] = 'E-mail inviata con successo all\' account collegato';
     }else{
-       $_SESSION['message'] = 'Errore! Email non è stato inviato correttamente, riprovare più tardi';
+       $_SESSION['error'] = 'Errore! Email non è stato inviato correttamente, riprovare più tardi';
     }
 }else{
-    $_SESSION['message'] = 'Errore! L\'utente indicato non esiste';
+    $_SESSION['error'] = 'Errore! L\'utente indicato non esiste';
 }
-header('location: forgot');
+header('location: ../forgot');

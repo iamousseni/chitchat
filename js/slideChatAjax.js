@@ -22,7 +22,7 @@ function createChat(chat) {
     return writeHTMLChat(chat);
 }
 
-function countMessageNotReaded(chat){
+function countMessageNotReaded(chat) {
     if (!sessionStorage.getItem('unreadChat' + chat['codChat'])) {
         //inizializzo a zero la "variabile" che conta il numero di messaggi non ancora letti della specifica chat
         sessionStorage.setItem('unreadChat' + chat['codChat'], 0);
@@ -46,10 +46,10 @@ function isArrivedNewMessage(chat) {
         if (chat['lastUserSender'] != getCookie('u')) {
             //suono per nuovo messaggio
             playSound('audio/notification/message.ogg');
-            if(sessionStorage.getItem('chatOpen') != chat['codChat']){
+            if (sessionStorage.getItem('chatOpen') != chat['codChat']) {
                 countMessageNotReaded(chat);
             }
-            
+
         }
     }
 }
@@ -114,7 +114,6 @@ function updateEventChats() {
     //lo metto qui l'evento perchè così almeno ogni volta che cambia il dom lui sa sempre dove (chi sono) sono gli elementi che voglio selezionare
     let chat = JSON.parse(sessionStorage.getItem('chats'));
     for (let x = 0; x < chat.length; x++) {
-
         document.getElementById('chat' + chat[x]['codChat']).addEventListener('click', function () {
             //memorizzo il nome della persona della chat aperta
             sessionStorage.setItem('fullnameChatOpen', chat[x]['nome'] + ' ' + chat[x]['cognome']);
@@ -126,7 +125,7 @@ function updateEventChats() {
             this.children[1].children[1].children[1].innerHTML = '';
             this.children[1].children[1].children[1].style.display = 'none';
 
-            if(sessionStorage.getItem('chatUnread')){
+            if (sessionStorage.getItem('chatUnread')) {
                 //rimuovo dal sessionStorage l'id della chat che è stata appena cliccata
                 var unreaded = sessionStorage.getItem('chatUnread').split('-');
                 unreaded = unreaded.filter(function (ele) {
@@ -214,12 +213,11 @@ setInterval(() => {
     xhttp.send();
 }, 1000);
 
-    //perchè così quando refresha la pagina al ritorno rivede le chat in cui non ha ancora letto dei messaggi(numero di messaggi non letti)
-    if (sessionStorage.getItem('chatUnread') && sessionStorage.getItem('chatUnread') != '') {
-        var unreaded = sessionStorage.getItem('chatUnread').split('-');
-        for (x = 0; x < unreaded.length; x++) {
-            document.getElementById('chat' + unreaded[x]).children[1].children[1].children[1].style.display = 'inline-block';
-            document.getElementById('chat' + unreaded[x]).children[1].children[1].children[1].innerHTML = sessionStorage.getItem('unreadChat' + unreaded[x]);
-        }
+//perchè così quando refresha la pagina al ritorno rivede le chat in cui non ha ancora letto dei messaggi(numero di messaggi non letti)
+if (sessionStorage.getItem('chatUnread') && sessionStorage.getItem('chatUnread') != '') {
+    var unreaded = sessionStorage.getItem('chatUnread').split('-');
+    for (let x = 0; x < unreaded.length; x++) {
+        document.getElementById('chat' + unreaded[x]).children[1].children[1].children[1].style.display = 'inline-block';
+        document.getElementById('chat' + unreaded[x]).children[1].children[1].children[1].innerHTML = sessionStorage.getItem('unreadChat' + unreaded[x]);
     }
-
+}

@@ -1,3 +1,10 @@
+
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+
 <div class="chat-header">
     <span>No chat selected</span>
 </div>
@@ -695,8 +702,4 @@
 <script src="js/chatAjax.js?c=<?php echo filemtime("js/chatAjax.js"); ?>"></script>
 <script src="js/sendMessage.js?c=<?php echo filemtime("js/sendMessage.js"); ?>"></script>
 <script src="js/viewImage.js?c=<?php echo filemtime("js/viewImage.js"); ?>"></script>
-<script
-src="https://code.jquery.com/jquery-3.4.1.js"
-integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-crossorigin="anonymous"></script>
 <script src="js/emojiPicker.js?c=<?php echo filemtime("js/emojiPicker.js"); ?>"></script>

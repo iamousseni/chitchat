@@ -10,8 +10,9 @@ function sendMessage(text){
             }
         }
     };
-    xhttp.open("GET", "elaborator/sendMessage&idChat="+idChat+"&m="+content, true);
-    xhttp.send();
+    xhttp.open("POST", "elaborator/sendMessage", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("&idChat="+idChat+"&m="+content);
 }
 
 

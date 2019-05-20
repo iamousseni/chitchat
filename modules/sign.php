@@ -123,6 +123,7 @@
     let btnSign = document.getElementById('btn-sign');
     let btnLog = document.getElementById('btn-log');
     let btnReg = document.getElementById('regNow');
+    let password = document.getElementById('password');
 
     btnSign.addEventListener('click', function(){
         if(!this.classList.contains('active')){
@@ -157,6 +158,16 @@
         document.getElementsByClassName('sign-in')[0].style.display = 'none';
     });
 
+    password.addEventListener('keyup', function(){
+        let regexSecure = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})');
+
+        if(regexSecure.test(this.value)){
+            this.style.borderBottom = '2px solid green';
+        }else{
+            this.style.borderBottom = '2px solid red';
+        }
+    });
+
     function simulateClick(id) {
         var event = new MouseEvent('click', {
             view: window,
@@ -172,4 +183,6 @@
             console.log('error')
        }
     }
+
+
 </script>

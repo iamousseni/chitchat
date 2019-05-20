@@ -430,7 +430,8 @@ footer {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid #43962f;
+    background: linear-gradient(to right, #045e32, #92cc25);
+    padding: 4px;
 }
 
 
@@ -577,6 +578,7 @@ footer {
 
 a {
     color: white !important;
+    cursor: pointer;
 }
 
 a:hover {

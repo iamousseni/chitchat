@@ -8,12 +8,18 @@
     $dateBirth = addslashes($_POST['year']).'-'.addslashes($_POST['month']).'-'.addslashes($_POST['day']);
     $gender = htmlspecialchars(addslashes($_POST['gender']));
 
+    //check if password is secure
+    if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/', $password)){
+        $_SESSION['error'] = 'Error your password isn\'t safe, enter password that has at least one capitalizer character, one number, one special character and has at least 8 character';
+        header('location: ../');
+    }
+
     //check if user already exist
     $result = $mysqli->query("SELECT usename FROM utente WHERE username = '$username';");
     //allready exist
     if($result !== false){
         $_SESSION['error'] = 'User with that username already exist';
-        header('location: :/');
+        header('location: ../');
     }
 
     $result = $mysqli->query("INSERT INTO utente (username, nome, cognome, email, password, dataNascita, genere) VALUES ('$username', '$name', '$surname', '$email', '$password', '$dateBirth', '$gender');");
@@ -49,7 +55,7 @@
             }
         }
     }else{
-        $_SESSION['error'] = 'Errore! Registrazione utente, riprovare più tardi';
+        $_SESSION['error'] = 'Errore registrazione utente, riprovare più tardi';
         header('location: ../');
     }
 

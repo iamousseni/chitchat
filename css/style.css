@@ -713,15 +713,15 @@ a:hover {
 }
 
 .chitchat-messages.right>div:first-child>span {
-    float: right;
     border-radius: 50px;
     background: #509f2e;
-    margin-left: 3%;
     padding: 1% 5%;
     display: inline-block;
     color: #fff;
-    overflow-wrap: anywhere;
-    word-break: break-all;
+    text-align: center;
+    max-width: 80%;
+    margin-right: 3%;
+    float: right;
 }
 
 .chitchat-messages.left>div:first-child>img {
@@ -765,12 +765,14 @@ a:hover {
 }
 
 .chitchat-messages.right>div:first-child{
-    display: flex;
-    flex-direction: row-reverse;
+    display: block;
+    width: 100%;
 }
 
 .chitchat-messages.right>div:first-child>img{
     width: 60%;
+    float: right;
+    margin-right: 3%;
 }
 
 textarea {

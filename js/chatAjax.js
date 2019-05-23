@@ -48,16 +48,33 @@ function checkChat(codeChat) {
 function outputMessages(messages) {
     var outMessage = '';
     for (let x = 0; x < messages.length; x++) {
-        var message = messages[x].testo == null ? '<div><img src="' + messages[x].pathFile + '" class="image" onclick="viewImage(this)"></div>' : '<div><span>' + htmlspecialchars(messages[x]['testo']) + '</span></div>';
+        var message = messages[x].testo == null ?
+            `<div>
+                <div>
+                    <img src="` + messages[x].pathFile + `" class="image" onclick="viewImage(this)">
+                </div>
+                <div>
+                    <span class="date">`+messages[x].dataOraInvio+`</span>
+                </div>
+             </div>` :
+            `<div>
+                <div>
+                    <span class="bubble">` + htmlspecialchars(messages[x]['testo']) + `</span>
+                </div>
+                <div>
+                    <span class="date">`+messages[x].dataOraInvio+`</span>
+                </div>
+             </div>`;
 
-        //messaggio proveniente dall'utente loggato?
         if (messages[x].codUtente != getCookie('u')) {
+            // Se messaggio dall'altro utente: sx e foto profilo
             outMessage += `
         <div class="left chitchat-messages" >
             <div>
                 <img src="` + messages[x].pathImageProfile + `" alt="` + messages[x].codUtente + `">
             </div>`;
         } else {
+            // Se messaggio da noi: dx
             outMessage += `<div class="right chitchat-messages" >`;
         }
 

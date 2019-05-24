@@ -458,6 +458,7 @@ footer {
 
 .container-chitchat>div:nth-child(2)>div:first-child {
     padding: 8%;
+    height: 30%;
 }
 
 .container-chitchat>div:nth-child(2)>div:first-child>div:first-child {
@@ -586,10 +587,18 @@ a:hover {
     text-decoration: none !important;
 }
 
+#page{
+    height: 100%;
+    overflow-y: hidden;
+}
+
 #chats {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    overflow-x: hidden;
+    overflow-y: visible;
+    height: 70%;
 }
 
 .carousel-control-prev,

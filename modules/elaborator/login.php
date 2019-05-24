@@ -32,5 +32,6 @@ if($usercheck->num_rows == 1){
 
 }else{
     $_SESSION['message'] = 'Errore! Controllare i dati inseriti e verificare di aver già attivato l\'account';
+    
     header('location: ../');
 }

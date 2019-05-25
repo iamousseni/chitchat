@@ -8,6 +8,7 @@
     $dateBirth = addslashes($_POST['year']).'-'.addslashes($_POST['month']).'-'.addslashes($_POST['day']);
     $gender = htmlspecialchars(addslashes($_POST['gender']));
 
+    
     //check if password is secure
     if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/', $password)){
         $_SESSION['error'] = 'Error your password isn\'t safe, enter password that has at least one capitalizer character, one number, one special character and has at least 8 character';

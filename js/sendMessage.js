@@ -24,6 +24,7 @@ var image = document.getElementById('image');
 input.addEventListener('keypress', function(e){
     if(e.keyCode === 13){
        sendMessage(this.value);
+       this.value = '';
     }
 });
 

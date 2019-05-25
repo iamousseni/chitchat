@@ -25,11 +25,12 @@ function createChatSearch(chat) {
     message = chat['testo'] == null ? "📷 Foto" : chat['testo'];
     message = lastUserSender + htmlspecialchars(message);
     message = message.length > 40 ? message.substring(0, 40) + '...' : message;
+    var statusUser = chat['online'] == '1' ? 'class="online"' : 'class="offline"';
     let result = `
         <hr>
-        <div class="slide-chat">
+        <div class="slide-chat" id="chat` + chat['codChat'] + `">
             <div>
-                <div>
+                <div ` + statusUser + `>
                     <img src="` + chat['pathImageProfile'] + `" alt="` + chat['codUtente'] + `">
                 </div>
             </div>

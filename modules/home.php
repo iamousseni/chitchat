@@ -16,7 +16,7 @@
         <div>
             <ul>
                 <li>
-                    <a href="">
+                    <a>
                         <i class="fas fa-home"></i>Home
                     </a>
                 </li>

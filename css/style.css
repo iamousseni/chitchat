@@ -1190,3 +1190,10 @@ textarea {
         width: 100%;
     }
 }
+
+img.m {
+    border: 3px solid #5994ff;
+}
+img.f {
+    border: 3px solid #f5758b;
+}

@@ -42,6 +42,11 @@ image.addEventListener('change', function(){
     }
 });
 
+send.addEventListener('click', function() {
+    sendMessage(input.value);
+    input.value = '';
+});
+
 function simulateClick(id) {
     var event = new MouseEvent('click', {
         view: window,
@@ -49,7 +54,7 @@ function simulateClick(id) {
         cancelable: true
     });
 
-    var element = document.getElementById(id); 
+    var element = document.getElementById(id);
     var cancelled = !element.dispatchEvent(event);
     if (!cancelled) {
         console.log('clicked')

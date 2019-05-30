@@ -21,6 +21,7 @@ var attach = document.getElementById('attach');
 var send = document.getElementById('send');
 var image = document.getElementById('image');
 
+// Invia il messaggio nel premere invio
 input.addEventListener('keypress', function(e){
     if(e.keyCode === 13){
        sendMessage(this.value);
@@ -42,6 +43,7 @@ image.addEventListener('change', function(){
     }
 });
 
+// Invia il messaggio nel cliccare il pulsante verde
 send.addEventListener('click', function() {
     sendMessage(input.value);
     input.value = '';

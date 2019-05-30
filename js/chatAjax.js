@@ -96,6 +96,7 @@ function markdownToHTML(markdown) {
     markdown = markdownReplacer(markdown, /\_/, '<em>', '</em>');
     markdown = markdownReplacer(markdown, /~~/, '<del>', '</del>');
     markdown = markdownReplacer(markdown, /--/, '<del>', '</del>');
+    markdown = markdownReplacer(markdown, /`/, '<code>', '</code>');
     return markdown;
 }
 

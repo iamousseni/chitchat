@@ -632,6 +632,12 @@ a:hover {
     overflow-y: visible;
 }
 
+#display-messages code {
+    font-family: monospace;
+    font-size: 16px;
+    color: #eee;
+}
+
 .container-message {
     display: flex;
     align-items: center;

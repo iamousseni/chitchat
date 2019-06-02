@@ -75,4 +75,5 @@ document.getElementById('search').addEventListener('keyup', function () {
     };
     xhttp.open("GET", "API/searchChatAPI.php?u=" + getCookie('u') + '&search=' + this.value, true);
     xhttp.send();
+    updateEventChats();
 });

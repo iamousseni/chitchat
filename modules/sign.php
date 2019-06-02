@@ -117,8 +117,6 @@
 <script src="js/dateValidator.js"></script>
 <script src="js/usernameAjax.js?get=d"<?php echo filemtime("js/usernameAjax.js"); ?>></script>
 <script>
-    //TO DO 06/04/2019
-    //check if password are secure
 
     let btnSign = document.getElementById('btn-sign');
     let btnLog = document.getElementById('btn-log');

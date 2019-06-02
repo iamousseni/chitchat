@@ -1,5 +1,5 @@
 
-<div id="myModal" class="modal">
+<div id="myModal" class="modal" style="display:none">
   <span class="close">&times;</span>
   <img class="modal-content" id="modalImg">
 </div>

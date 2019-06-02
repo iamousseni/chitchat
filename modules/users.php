@@ -20,7 +20,7 @@
     $objs = json_decode($json);
 
     $month = [1 => 'Gennaio', 2 => 'Febbraio', 3 => 'Marzo', 4 => 'Aprile', 5 => 'Maggio', 6 => 'Giugno', 7 => 'Luglio', 8 => 'Agosto', 9 => 'Settembre', 10 => 'Ottobre', 11 => 'Novembre', 12 => 'Dicembre'];
-
+    
     $result = '';
     foreach($objs as $obj){
         $statusUser = $obj->online== '1' ? 'class="online"' : 'class="offline"';

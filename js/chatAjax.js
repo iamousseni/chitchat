@@ -48,16 +48,33 @@ function checkChat(codeChat) {
 function outputMessages(messages) {
     var outMessage = '';
     for (let x = 0; x < messages.length; x++) {
-        var message = messages[x].testo == null ? '<div><img src="' + messages[x].pathFile + '" class="image" onclick="viewImage(this)"></div>' : '<div><span>' + htmlspecialchars(messages[x]['testo']) + '</span></div>';
+        var message = messages[x].testo == null ?
+            `<div>
+                <div>
+                    <img src="` + messages[x].pathFile + `" class="image" onclick="viewImage(this)">
+                </div>
+                <div>
+                    <span class="date">`+messages[x].dataOraInvio+`</span>
+                </div>
+             </div>` :
+            `<div>
+                <div>
+                    <span class="bubble">` + markdownToHTML(htmlspecialchars(messages[x]['testo'])) + `</span>
+                </div>
+                <div>
+                    <span class="date">`+messages[x].dataOraInvio+`</span>
+                </div>
+             </div>`;
 
-        //messaggio proveniente dall'utente loggato?
         if (messages[x].codUtente != getCookie('u')) {
+            // Se messaggio dall'altro utente: sx e foto profilo
             outMessage += `
         <div class="left chitchat-messages" >
             <div>
                 <img src="` + messages[x].pathImageProfile + `" alt="` + messages[x].codUtente + `">
             </div>`;
         } else {
+            // Se messaggio da noi: dx
             outMessage += `<div class="right chitchat-messages" >`;
         }
 
@@ -69,6 +86,36 @@ function outputMessages(messages) {
     return outMessage;
 }
 
+// Convert markdown to HTML (returns a str)
+function markdownToHTML(markdown) {
+    markdown = markdownReplacer(markdown, /\*\*\*/, '<strong><em>', '</em></strong>');
+    markdown = markdownReplacer(markdown, /\_\_\_/, '<strong><em>', '</em></strong>');
+    markdown = markdownReplacer(markdown, /\*\*/, '<strong>', '</strong>');
+    markdown = markdownReplacer(markdown, /\_\_/, '<strong>', '</strong>');
+    markdown = markdownReplacer(markdown, /\*/, '<em>', '</em>');
+    markdown = markdownReplacer(markdown, /\_/, '<em>', '</em>');
+    markdown = markdownReplacer(markdown, /~~/, '<del>', '</del>');
+    markdown = markdownReplacer(markdown, /--/, '<del>', '</del>');
+    markdown = markdownReplacer(markdown, /`/, '<code>', '</code>');
+    return markdown;
+}
+
+// Replace the delimiter with the start and end tags
+function markdownReplacer(markdown, delimiter, startHTML, endHTML) {
+    g = 0; // Counter
+    // Finché c'è un delimitatore...
+    while (markdown.search(delimiter) != -1) {
+        // Sostituisci il delimitatore alternativamente...
+        if (g % 2 === 0)
+            // ...Con il tag d'inizio
+            markdown = markdown.replace(delimiter, startHTML);
+        else
+            // ...Con il tag finale
+            markdown = markdown.replace(delimiter, endHTML);
+        g++;
+    }
+    return markdown;
+}
 
 function clearAllChatSetInterval() {
     window.clearInterval(intervalsIds);

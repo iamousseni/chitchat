@@ -457,6 +457,7 @@ footer {
 
 .container-chitchat>div:nth-child(2)>div:first-child {
     padding: 8%;
+    height: 30%;
 }
 
 .container-chitchat>div:nth-child(2)>div:first-child>div:first-child {
@@ -585,10 +586,18 @@ a:hover {
     text-decoration: none !important;
 }
 
+#page {
+    height: 100%;
+    overflow-y: hidden;
+}
+
 #chats {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    overflow-x: hidden;
+    overflow-y: visible;
+    height: 70%;
 }
 
 .carousel-control-prev,
@@ -620,6 +629,12 @@ a:hover {
     height: 75%;
     overflow-x: hidden;
     overflow-y: visible;
+}
+
+#display-messages code {
+    font-family: monospace;
+    font-size: 16px;
+    color: #eee;
 }
 
 .container-message {
@@ -711,7 +726,7 @@ a:hover {
     width: 95%;
 }
 
-.chitchat-messages.right>div:first-child>span {
+.chitchat-messages.right .bubble {
     border-radius: 50px;
     background: #509f2e;
     padding: 1% 5%;
@@ -719,8 +734,11 @@ a:hover {
     color: #fff;
     text-align: center;
     max-width: 80%;
+}
+
+.chitchat-messages.right .bubble,
+.chitchat-messages.right .date {
     margin-right: 3%;
-    float: right;
 }
 
 .chitchat-messages.left>div:first-child>img {
@@ -734,7 +752,7 @@ a:hover {
     width: 95%;
 }
 
-.chitchat-messages.right>div:first-child>img {
+.chitchat-messages.right img {
     width: 100%;
 }
 
@@ -746,21 +764,24 @@ a:hover {
     height: 400px;
 }
 
-.chitchat-messages.left>div:nth-child(2)>span {
+.chitchat-messages.left .bubble {
     border-radius: 50px;
     background: #f0f0f0;
-    margin-left: 3%;
     padding: 1% 5%;
     display: inline-block;
 }
 
-.chitchat-messages>div:nth-child(2)>img {
+.chitchat-messages.left .bubble,
+.chitchat-messages.left .date {
+    margin-left: 3%;
+}
+
+.chitchat-messages img {
     height: 100%;
     object-fit: cover;
     object-position: top;
     width: 80%;
-    float: right;
-    margin-right: 5%;
+    margin: 0 3%;
 }
 
 .chitchat-messages.right>div:first-child {
@@ -768,10 +789,21 @@ a:hover {
     width: 100%;
 }
 
-.chitchat-messages.right>div:first-child>img {
+.chitchat-messages.right img {
     width: 60%;
-    float: right;
     margin-right: 3%;
+}
+
+.right>div>div {
+    text-align: right;
+}
+
+.left>div>div {
+    text-align: left;
+}
+
+.chitchat-messages>div>div:nth-child(2) {
+    line-height: 1;
 }
 
 textarea {
@@ -1142,6 +1174,10 @@ textarea {
     cursor: pointer;
 }
 
+.date {
+    font-size: 0.7em;
+}
+
 .modal-content,
 #caption {
     animation-name: zoom;
@@ -1194,4 +1230,12 @@ textarea {
     width: 100%;
     text-align: center;
     display: block;
+}
+
+img.m {
+    border: 3px solid #5994ff;
+}
+
+img.f {
+    border: 3px solid #f5758b;
 }

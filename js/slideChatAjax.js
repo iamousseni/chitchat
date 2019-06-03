@@ -111,10 +111,14 @@ function writeHTMLChat(chat) {
 }
 
 function updateEventChats() {
+
+    
     //lo metto qui l'evento perchè così almeno ogni volta che cambia il dom lui sa sempre dove (chi sono) sono gli elementi che voglio selezionare
+    let chats = document.getElementsByClassName('slide-chat');
     let chat = JSON.parse(sessionStorage.getItem('chats'));
+    console.table(chat.length);
     for (let x = 0; x < chat.length; x++) {
-        document.getElementById('chat' + chat[x]['codChat']).addEventListener('click', function () {
+        document.getElementById(chats[x].id).addEventListener('click', function () {
             //memorizzo il nome della persona della chat aperta
             sessionStorage.setItem('fullnameChatOpen', chat[x]['nome'] + ' ' + chat[x]['cognome']);
             //elimino il setIntervel della chat presistente altrimenti si rischia l'accumulo e poi il sovraccarico

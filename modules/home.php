@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a id="chat">
                         <i class="far fa-comments"></i>Chat
                     </a>
                 </li>
@@ -105,7 +105,8 @@
         </div>
     </div>
     <div class="col-4 p-0" id="page">
-    <?php @include 'slideChat.php'; ?>
+    <?php 
+    include @include 'slideChat.php'; ?>
     </div>
     <div class="col-6 container-chat">
         <?php @include 'chat.php'; ?>
@@ -113,3 +114,29 @@
     <script class src="js/UserModify.js"></script>
     <script src="js/UserModify.js?c=<?php echo filemtime("js/UserModify.js"); ?>"></script>
 </div>
+
+<script>
+let chat = document.getElementById('chat');
+chat.addEventListener('click', function(){
+    console.log('click');
+    loadPage('users.php');
+});
+
+function loadPage(uri){
+    let xhttp = new XMLHttpRequest();
+    let form = new FormData();
+    xhttp.open('POST', 'home');
+    xhttp.onreadyStateChange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText != undefined){
+                document.getElementById('page').innerHTML = this.responseText;
+            }else{
+                console.log('oops');
+            }
+        }
+    };
+    form.append('uri', uri);
+    xhttp.send(form);
+}
+
+</script>

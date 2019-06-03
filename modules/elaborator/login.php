@@ -26,11 +26,12 @@ if($usercheck->num_rows == 1){
     if(isset($_COOKIE['u'])){
         header('location: home');
     }else{
-        $_SESSION['message'] = 'Errore cookie! non è stato possibile effettaure l\'accesso al sistema, si prega di riprovare';
+        $_SESSION['error'] = 'Errore cookie! non è stato possibile effettaure l\'accesso al sistema, si prega di riprovare';
         header('location: ../');
     }
 
 }else{
-    $_SESSION['message'] = 'Errore! Controllare i dati inseriti e verificare di aver già attivato l\'account';
+    $_SESSION['error'] = 'Errore! Controllare i dati inseriti e verificare di aver già attivato l\'account';
+    
     header('location: ../');
 }

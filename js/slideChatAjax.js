@@ -110,13 +110,13 @@ function writeHTMLChat(chat) {
     return result;
 }
 
-function updateEventChats() {
+function updateEventChats(responseText) {
 
     
     //lo metto qui l'evento perchè così almeno ogni volta che cambia il dom lui sa sempre dove (chi sono) sono gli elementi che voglio selezionare
     let chats = document.getElementsByClassName('slide-chat');
-    let chat = JSON.parse(sessionStorage.getItem('chats'));
-    console.table(chat.length);
+    let chat = JSON.parse(responseText);
+
     for (let x = 0; x < chat.length; x++) {
         document.getElementById(chats[x].id).addEventListener('click', function () {
             //memorizzo il nome della persona della chat aperta
@@ -190,7 +190,7 @@ window.addEventListener('load', function () {
     }
     xhttp.open("GET", "API/userStatusAPI.php?u=" + getCookie('u') + "&status=" + stato, true);
     xhttp.send();
-    updateEventChats();
+    updateEventChats(sessionStorage.getItem('chats'));
 });
 
 
@@ -208,7 +208,7 @@ setInterval(() => {
                         body += createChat(chats[x]);
                     }
                     document.getElementById('chats').innerHTML = body;
-                    updateEventChats();
+                    updateEventChats(this.responseText);
                 }
             }
         }

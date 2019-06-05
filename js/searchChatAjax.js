@@ -25,6 +25,8 @@ function createChatSearch(chat) {
     message = chat['testo'] == null ? "📷 Foto" : chat['testo'];
     message = lastUserSender + htmlspecialchars(message);
     message = message.length > 40 ? message.substring(0, 40) + '...' : message;
+    //variabile che serve per far vedere il numero di messaggi non ancora letti
+    var unreadStatus = sessionStorage.getItem('unreadChat' + chat['codChat']) ? 'style="display: inline-block"' : '';
     var statusUser = chat['online'] == '1' ? 'class="online"' : 'class="offline"';
     let result = `
         <hr>
@@ -41,6 +43,7 @@ function createChatSearch(chat) {
                 </div>
                 <div>
                     <span>` + message + `</span>
+                    <span class="notify" ` + unreadStatus + `>` + sessionStorage.getItem('unreadChat' + chat['codChat']) + `</span>
                 </div>
             </div>
         </div>
@@ -50,23 +53,19 @@ function createChatSearch(chat) {
 }
 
 document.getElementById('search').addEventListener('keyup', function () {
-    if (this.value == '')
-        localStorage.setItem('updates', '1');
-
     let body = '';
     let chats;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != undefined) {
-                if (this.responseText == '') {
-                    localStorage.setItem('updates', 1);
-                } else {
+                if (this.responseText != '') {
                     chats = JSON.parse(this.responseText);
                     for (x = 0; x < chats.length; x++) {
                         body += createChatSearch(chats[x]);
                     }
                     document.getElementById('chats').innerHTML = body;
+                    updateEventChats(this.responseText);
                 }
 
             }
@@ -75,5 +74,4 @@ document.getElementById('search').addEventListener('keyup', function () {
     };
     xhttp.open("GET", "API/searchChatAPI.php?u=" + getCookie('u') + '&search=' + this.value, true);
     xhttp.send();
-    updateEventChats();
 });

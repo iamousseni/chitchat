@@ -434,7 +434,6 @@ footer {
     padding: 4px;
 }
 
-
 .user-containerSetting>div:first-child>div:nth-child(2) {
     color: #fff;
     text-align: center;
@@ -473,7 +472,7 @@ footer {
     color: lightgreen;
 }
 
-#chats > hr {
+#chats>hr {
     margin-bottom: 0rem;
     margin-top: 0rem;
 }
@@ -587,7 +586,7 @@ a:hover {
     text-decoration: none !important;
 }
 
-#page{
+#page {
     height: 100%;
     overflow-y: hidden;
 }
@@ -682,7 +681,8 @@ a:hover {
     outline: none;
 }
 
-.container-message>div:nth-child(3)>form, .container-message>div:nth-child(3)>form > input{
+.container-message>div:nth-child(3)>form,
+.container-message>div:nth-child(3)>form>input {
     visibility: hidden;
     display: none;
 }
@@ -691,7 +691,6 @@ a:hover {
     font-size: 22px;
     color: #9e9e9e;
 }
-
 
 .container-message>div:nth-child(3)>button[type=submit] {
     width: 40px;
@@ -736,7 +735,9 @@ a:hover {
     text-align: center;
     max-width: 80%;
 }
-.chitchat-messages.right .bubble, .chitchat-messages.right .date {
+
+.chitchat-messages.right .bubble,
+.chitchat-messages.right .date {
     margin-right: 3%;
 }
 
@@ -759,7 +760,7 @@ a:hover {
     width: 90%;
 }
 
-.image-container{
+.image-container {
     height: 400px;
 }
 
@@ -769,7 +770,9 @@ a:hover {
     padding: 1% 5%;
     display: inline-block;
 }
-.chitchat-messages.left .bubble, .chitchat-messages.left .date {
+
+.chitchat-messages.left .bubble,
+.chitchat-messages.left .date {
     margin-left: 3%;
 }
 
@@ -781,22 +784,24 @@ a:hover {
     margin: 0 3%;
 }
 
-.chitchat-messages.right>div:first-child{
+.chitchat-messages.right>div:first-child {
     display: block;
     width: 100%;
 }
 
-.chitchat-messages.right img{
+.chitchat-messages.right img {
     width: 60%;
     margin-right: 3%;
 }
 
-.right > div > div {
+.right>div>div {
     text-align: right;
 }
-.left > div > div {
+
+.left>div>div {
     text-align: left;
 }
+
 .chitchat-messages>div>div:nth-child(2) {
     line-height: 1;
 }
@@ -805,7 +810,7 @@ textarea {
     width: 100%;
 }
 
-.intercom-composer-popover-input{
+.intercom-composer-popover-input {
     font-size-adjust: none;
     font-size: 100%;
     font-style: normal;
@@ -1010,14 +1015,14 @@ textarea {
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
 }
+
 .intercom-composer-popover {
     z-index: 2147483003;
     position: absolute;
     left: 0;
     bottom: 50px;
-    box-shadow: 0 1px 15px 1px rgba(0,0,0,.08);
+    box-shadow: 0 1px 15px 1px rgba(0, 0, 0, .08);
     background-color: #fff;
     border-radius: 6px;
     transition-duration: 200ms;
@@ -1028,15 +1033,18 @@ textarea {
     transition: all 0.2s linear;
     visibility: hidden;
 }
-.intercom-composer-popover.active{
+
+.intercom-composer-popover.active {
     visibility: visible;
-    opacity:1;
+    opacity: 1;
     bottom: 70px;
 }
+
 .intercom-emoji-picker {
     width: 330px;
     height: 260px;
 }
+
 .intercom-composer-popover-header {
     position: absolute;
     top: 0;
@@ -1045,6 +1053,7 @@ textarea {
     height: 40px;
     border-bottom: 1px solid #edeff1;
 }
+
 .intercom-composer-popover-input {
     background-image: url(https://js.intercomcdn.com/images/search.7ae40c25.png);
     background-size: 16px 16px;
@@ -1058,9 +1067,10 @@ textarea {
     width: 100%;
     box-sizing: border-box;
     background-image: url(https://js.intercomcdn.com/images/search@2x.9f02b9f3.png);
-    border:none;
+    border: none;
     outline: none;
 }
+
 .intercom-composer-popover-body {
     position: absolute;
     top: 40px;
@@ -1070,18 +1080,22 @@ textarea {
     padding: 0 20px;
     overflow-y: scroll;
 }
+
 .intercom-emoji-picker-group {
     margin: 10px -5px;
 }
+
 .intercom-emoji-picker-group {
     margin: 10px -5px;
 }
+
 .intercom-emoji-picker-group-title {
     color: #b8c3ca;
     font-weight: 400;
     font-size: 13px;
     margin: 5px;
 }
+
 .intercom-emoji-picker-emoji {
     padding: 5px;
     width: 30px;
@@ -1093,16 +1107,18 @@ textarea {
     font-size: 28px;
     transition: -webkit-transform 60ms ease-out;
     transition: transform 60ms ease-out;
-    transition: transform 60ms ease-out,-webkit-transform 60ms ease-out;
+    transition: transform 60ms ease-out, -webkit-transform 60ms ease-out;
     transition-delay: 60ms;
-    font-family: Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,Android Emoji,EmojiSymbols;
+    font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
 }
+
 .intercom-emoji-picker-emoji:hover {
     transition-delay: 0ms;
     -webkit-transform: scale(1.4);
     -ms-transform: scale(1.4);
     transform: scale(1.4);
 }
+
 .intercom-composer-popover-caret {
     position: absolute;
     bottom: -8px;
@@ -1112,18 +1128,18 @@ textarea {
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-top: 8px solid #fff;
-    left:20px;
+    left: 20px;
 }
 
-.chat-input-tool{
+.chat-input-tool {
     background-color: #32A8E6;
     padding: 10px;
-    border:none;
+    border: none;
     border-radius: 5px;
     position: absolute;
-    bottom:20px;
+    bottom: 20px;
     left: 50%;
-    outline:none;
+    outline: none;
 }
 
 .modal {
@@ -1136,12 +1152,11 @@ textarea {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     align-items: center;
 }
-
 
 .modal-content {
     margin: auto;
@@ -1151,11 +1166,11 @@ textarea {
     height: 90%;
 }
 
-#modalImg{
+#modalImg {
     object-fit: contain;
 }
 
-.image{
+.image {
     cursor: pointer;
 }
 
@@ -1163,14 +1178,19 @@ textarea {
     font-size: 0.7em;
 }
 
-.modal-content, #caption {
+.modal-content,
+#caption {
     animation-name: zoom;
     animation-duration: 0.6s;
 }
 
 @keyframes zoom {
-    from {transform:scale(0)}
-    to {transform:scale(1)}
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
 .close {
@@ -1191,15 +1211,31 @@ textarea {
     cursor: pointer;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px) {
     .modal-content {
         width: 100%;
     }
 }
 
+#test {
+    background-color: rgb(255, 253, 253);
+    align-content: center;
+}
+
+.title {
+    display: block;
+}
+
+.nome {
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
 img.m {
     border: 3px solid #5994ff;
 }
+
 img.f {
     border: 3px solid #f5758b;
 }

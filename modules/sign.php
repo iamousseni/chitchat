@@ -115,7 +115,7 @@
     </div>
 </div>
 <script src="js/dateValidator.js"></script>
-<script src="js/usernameAjax.js?get=d"<?php echo filemtime("js/usernameAjax.js"); ?>></script>
+<script src="js/usernameAjax.js?get=do"<?php echo filemtime("js/usernameAjax.js"); ?>></script>
 <script>
 
     let btnSign = document.getElementById('btn-sign');

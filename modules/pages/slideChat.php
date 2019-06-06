@@ -1,4 +1,4 @@
-<?php include 'Admin/include/config.php'; ?>
+<?php include '../../Admin/include/config.php'; ?>
 <div>
     <div>
         <h1>Chat</h1>

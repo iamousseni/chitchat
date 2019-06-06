@@ -18,7 +18,7 @@
         <div>
             <ul>
                 <li>
-                    <a>
+                    <a id="slideHome">
                         <i class="fas fa-home"></i>Home
                     </a>
                 </li>
@@ -106,7 +106,7 @@
     </div>
     <div class="col-4 p-0" id="page">
     <?php 
-        @include 'slideChat.php'; ?>
+        @include 'pages/slideChat.php'; ?>
     </div>
     <div class="col-6 container-chat">
         <?php @include 'chat.php'; ?>
@@ -119,6 +119,11 @@
 let chat = document.getElementById('chat');
 chat.addEventListener('click', function(){
     loadPage('pages/users.php');
+});
+
+let slideHome = document.getElementById('slideHome');
+slideHome.addEventListener('click', function(){
+    loadPage('pages/slideChat.php');
 });
 
 function loadPage(uri){

@@ -106,7 +106,7 @@
     </div>
     <div class="col-4 p-0" id="page">
     <?php 
-    include @include 'slideChat.php'; ?>
+        @include 'slideChat.php'; ?>
     </div>
     <div class="col-6 container-chat">
         <?php @include 'chat.php'; ?>
@@ -118,15 +118,13 @@
 <script>
 let chat = document.getElementById('chat');
 chat.addEventListener('click', function(){
-    console.log('click');
-    loadPage('users.php');
+    loadPage('pages/users.php');
 });
 
 function loadPage(uri){
     let xhttp = new XMLHttpRequest();
-    let form = new FormData();
-    xhttp.open('POST', 'home');
-    xhttp.onreadyStateChange = function(){
+    xhttp.open('GET', uri);
+    xhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText != undefined){
                 document.getElementById('page').innerHTML = this.responseText;
@@ -135,8 +133,7 @@ function loadPage(uri){
             }
         }
     };
-    form.append('uri', uri);
-    xhttp.send(form);
+    xhttp.send();
 }
 
 </script>

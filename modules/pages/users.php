@@ -1,4 +1,4 @@
-<?php include 'Admin/include/config.php'; ?>
+<?php include '../../Admin/include/config.php'; ?>
 <div>
     <div>
         <h1>Users</h1>
@@ -15,13 +15,14 @@
 <div id="chats">
 <?php
 
-    $API_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $API_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[BASE]";
     $json = file_get_contents($API_link.'/API/slideUsersAPI.php?u='.$_COOKIE["u"].'&limit=10');
     $objs = json_decode($json);
 
     $month = [1 => 'Gennaio', 2 => 'Febbraio', 3 => 'Marzo', 4 => 'Aprile', 5 => 'Maggio', 6 => 'Giugno', 7 => 'Luglio', 8 => 'Agosto', 9 => 'Settembre', 10 => 'Ottobre', 11 => 'Novembre', 12 => 'Dicembre'];
     
     $result = '';
+    //die(var_dump($objs));
     foreach($objs as $obj){
         $statusUser = $obj->online== '1' ? 'class="online"' : 'class="offline"';
         $result .= '
